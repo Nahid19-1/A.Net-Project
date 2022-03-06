@@ -1,31 +1,36 @@
-﻿@{
+﻿@model IEnumerable<Circular_Bus_Ticket.Models.Database.BusRoute>
+@{
     ViewBag.Title = "Home Page";
 }
+<h2 align="center">Bus Information</h2>
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+<table class="table table-bordered">
+    <tr>
+        <th>Bus Id</th>
+        <th>Starting point</th>
+        <th>End point</th>
+        <th>Stopage 1</th>
+        <th>Stopage 2</th>
+        <th>Stopage 3</th>
+        <th>Bus Timing</th>
+        <th>Bus Fair 1</th>
+        <th>Bus Fair 2</th>
+        <th>Bus Fair 3</th>
+    </tr>
+    @foreach (var b in Model)
+    {
+        <tr>
+            <td>@b.BR_BId</td>
+            <td>@b.BR_Start</td>
+            <td>@b.BR_End</td>
+            <td>@b.BR_Stopage1</td>
+            <td>@b.BR_Stopage2</td>
+            <td>@b.BR_Stopage3</td>
+            <td>@b.BR_Time</td>
+            <td>@b.BR_FairInS1</td>
+            <td>@b.BR_FairInS2</td>
+            <td>@b.BR_FairInS3</td>
+        </tr>
+    }
+</table>
