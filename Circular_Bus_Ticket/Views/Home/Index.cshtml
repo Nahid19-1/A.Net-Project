@@ -17,20 +17,23 @@
         <th>Bus Fair 1</th>
         <th>Bus Fair 2</th>
         <th>Bus Fair 3</th>
+        <th>Buy Ticket</th>
     </tr>
     @foreach (var b in Model)
     {
-        <tr>
-            <td>@b.BR_BId</td>
-            <td>@b.BR_Start</td>
-            <td>@b.BR_End</td>
-            <td>@b.BR_Stopage1</td>
-            <td>@b.BR_Stopage2</td>
-            <td>@b.BR_Stopage3</td>
-            <td>@b.BR_Time</td>
-            <td>@b.BR_FairInS1</td>
-            <td>@b.BR_FairInS2</td>
-            <td>@b.BR_FairInS3</td>
-        </tr>
+<tr>
+    <td>@b.BR_BId</td>
+    <td>@b.BR_Start</td>
+    <td>@b.BR_End</td>
+    <td>@b.BR_Stopage1</td>
+    <td>@b.BR_Stopage2</td>
+    <td>@b.BR_Stopage3</td>
+    <td>@b.BR_Time</td>
+    <td>@b.BR_FairInS1</td>
+    <td>@b.BR_FairInS2</td>
+    <td>@b.BR_FairInS3</td>
+    <td><a href="/Products/AddToCart/@b.BR_BId" class="btn btn-success">Add To Cart</a> </td>
+
+</tr>
     }
 </table>
