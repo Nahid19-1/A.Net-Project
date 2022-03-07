@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<h2>Resister</h2>
+
+<form action="/User/Create" method="post">
+    <input type="text" name="U_UserName" placeholder="UserName" class="form-control" />
+    <input type="password" name="U_Password" placeholder="Password" class="form-control" />
+    <input type="text" name="U_Phone" placeholder="Phone" class="form-control" />
+    <input type="text" name="U_Email" placeholder="Email" class="form-control" />
+    <input type="text" name="U_Address" placeholder="Address" class="form-control" />
+    <input type="text" name="U_Gender" placeholder="Gender" class="form-control" />
+    <input type="text" name="U_DateofBirth" placeholder="DateofBirth" class="form-control" />
+    <input type="hidden" name="U_Role" value="User" class="form-control" />
+
+
+    <input type="submit" value="Add" />
+
+</form>
