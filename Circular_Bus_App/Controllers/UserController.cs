@@ -41,7 +41,7 @@ namespace Circular_Bus_App.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            TempData["msg"] = "Invalid Crdentials";
+            TempData["msg"] = "Invalid Username or Password";
             return RedirectToAction("LoginUser");
         }
 
@@ -53,7 +53,7 @@ namespace Circular_Bus_App.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            return View(new User());
         }
 
         [HttpPost]
