@@ -39,7 +39,23 @@ namespace Circular_Bus_App.Controllers
                 Session["userid"] = data.U_Id;
                 Session["username"] = data.U_UserName;
 
-                return RedirectToAction("Index", "Home");
+                if (Session["role"].ToString() == "User      ")
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                //SJ
+                else if (Session["role"].ToString() == "Supervisor")
+                {
+                    return RedirectToAction("Dashboard", "Supervisor");
+                }
+                //RG
+                else if (data.U_Role == "BusOwner  ")
+                {
+                    return RedirectToAction("Index", "BusOwner");
+
+                }
+
+
             }
 
             TempData["msg"] = "Invalid Username or Password";
@@ -67,15 +83,24 @@ namespace Circular_Bus_App.Controllers
 
                 if (u.U_Role == "Supervisor")
                 {
-                    
+
                     User us = new User();
+                    us.U_UserName = u.U_UserName;
+                    us.U_Password = u.U_Password;
+                    us.U_Phone = u.U_Phone;
+                    us.U_Email = u.U_Email;
+                    us.U_Address = u.U_Address;
+                    us.U_Gender = u.U_Gender;
+                    us.U_DateofBirth = u.U_DateofBirth;
+                    us.U_Role = u.U_Role;
                     us.U_Status = "Pending";
-                    db.Users.Add(u);
+
                     db.Users.Add(us);
                     db.SaveChanges();
                     return RedirectToAction("LoginUser");
 
                 }
+            
                 
                 db.Users.Add(u);
                 db.SaveChanges();

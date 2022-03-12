@@ -129,8 +129,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Auth\BusOwnerAccess.cs" />
     <Compile Include="Auth\UserAccess.cs" />
+    <Compile Include="Controllers\BusOwnerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SupervisorController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -241,6 +244,19 @@
     <Content Include="Views\User\Cart.cshtml" />
     <Content Include="Views\User\CartDetail.cshtml" />
     <Content Include="Views\User\DeleteTicket.cshtml" />
+    <Content Include="Views\Shared\_SupervisorLayout.cshtml" />
+    <Content Include="Views\Supervisor\Edit.cshtml" />
+    <Content Include="Views\Supervisor\Dashboard.cshtml" />
+    <Content Include="Views\Supervisor\AssignedBuses.cshtml" />
+    <Content Include="Views\Supervisor\EditSeat.cshtml" />
+    <Content Include="Views\Shared\_BusOwnerLayout .cshtml" />
+    <Content Include="Views\BusOwner\BusOwnerProfile.cshtml" />
+    <Content Include="Views\BusOwner\Buses.cshtml" />
+    <Content Include="Views\BusOwner\BusOwnerEdit.cshtml" />
+    <Content Include="Views\BusOwner\BusEdit.cshtml" />
+    <Content Include="Views\BusOwner\AddBus.cshtml" />
+    <Content Include="Views\BusOwner\ViewSell.cshtml" />
+    <Content Include="Views\BusOwner\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

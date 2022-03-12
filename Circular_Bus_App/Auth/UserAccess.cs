@@ -17,7 +17,7 @@ namespace Circular_Bus_App.Auth
             {
                 return false;
             }
-            if (httpContext.Session["role"].ToString().Equals("User"))
+            if (httpContext.Session["role"].ToString().Equals("User      "))
             {
                 return true;
             }
