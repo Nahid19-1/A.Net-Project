@@ -131,6 +131,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Auth\UserAccess.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SupervisorController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -160,9 +161,6 @@
       <DependentUpon>BusModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\BusRoute.cs">
-      <DependentUpon>BusModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\Cart.cs">
       <DependentUpon>BusModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\SoldTicket.cs">
@@ -237,10 +235,11 @@
     <Content Include="Views\User\Profile.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />
-    <Content Include="Views\User\Purchase.cshtml" />
-    <Content Include="Views\User\Cart.cshtml" />
-    <Content Include="Views\User\CartDetail.cshtml" />
-    <Content Include="Views\User\DeleteTicket.cshtml" />
+    <Content Include="Views\Shared\_SupervisorLayout.cshtml" />
+    <Content Include="Views\Supervisor\Edit.cshtml" />
+    <Content Include="Views\Supervisor\Dashboard.cshtml" />
+    <Content Include="Views\Supervisor\AssignedBuses.cshtml" />
+    <Content Include="Views\Supervisor\EditSeat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -17,10 +17,9 @@ namespace Circular_Bus_App.Models.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.SoldTickets = new HashSet<SoldTicket>();
             this.BusInfoes = new HashSet<BusInfo>();
             this.BusInfoes1 = new HashSet<BusInfo>();
-            this.Carts = new HashSet<Cart>();
+            this.SoldTickets = new HashSet<SoldTicket>();
         }
     
         public int U_Id { get; set; }
@@ -35,12 +34,10 @@ namespace Circular_Bus_App.Models.Database
         public string U_Status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SoldTicket> SoldTickets { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BusInfo> BusInfoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BusInfo> BusInfoes1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cart> Carts { get; set; }
+        public virtual ICollection<SoldTicket> SoldTickets { get; set; }
     }
 }
