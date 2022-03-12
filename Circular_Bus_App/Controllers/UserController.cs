@@ -34,6 +34,7 @@ namespace Circular_Bus_App.Controllers
             if (data != null)
             {               
                 FormsAuthentication.SetAuthCookie(data.U_UserName, true);
+
                 Session["role"] = data.U_Role;
                 Session["userid"] = data.U_Id;
                 Session["username"] = data.U_UserName;
@@ -63,6 +64,19 @@ namespace Circular_Bus_App.Controllers
             if(ModelState.IsValid)
             {
                 CircularBusEntities db = new CircularBusEntities();
+
+                if (u.U_Role == "Supervisor")
+                {
+                    
+                    User us = new User();
+                    us.U_Status = "Pending";
+                    db.Users.Add(u);
+                    db.Users.Add(us);
+                    db.SaveChanges();
+                    return RedirectToAction("LoginUser");
+
+                }
+                
                 db.Users.Add(u);
                 db.SaveChanges();
                 return RedirectToAction("LoginUser");
@@ -143,6 +157,132 @@ namespace Circular_Bus_App.Controllers
             db.Users.Remove(data);
             db.SaveChanges();
             return RedirectToAction("LoginUser");
+
+        }
+
+        [HttpGet]
+        public ActionResult Purchase(int id)
+        {
+            CircularBusEntities db = new CircularBusEntities();
+            var data = (from b in db.BusRoutes
+                        where b.BR_BId == id
+                        select b).FirstOrDefault();
+            return View(data);
+            
+        }
+
+        [HttpGet]
+        public ActionResult Cart(string data1,int data2,int data3)
+        {
+            CircularBusEntities db = new CircularBusEntities();
+            int s = (int)Session["userid"];
+
+            if (data1 == "Bashundhara         ")
+            {
+                Cart c = new Cart();
+                c.U_Id = s;
+                c.B_Id = data3;
+                c.BS_Fair = data2;
+                c.Stopage = data1;
+                db.Carts.Add(c);
+                db.SaveChanges();
+
+                var data = (from car in db.Carts 
+                            where car.U_Id == s
+                            select car).ToList();
+
+                var sum_price = (from sum in db.Carts
+                                 where sum.U_Id == s
+                                 select sum).Sum(S => S.BS_Fair).ToString();
+                ViewBag.SP = sum_price;
+                return View(data);
+            }
+
+            else if (data1 == "Gulshan 1           ")
+            {
+                Cart c = new Cart();
+                c.U_Id = s;
+                c.B_Id = data3;
+                c.BS_Fair = data2;
+                c.Stopage = data1;
+                db.Carts.Add(c);
+                db.SaveChanges();
+
+                var data = (from car in db.Carts
+                            where car.U_Id == s
+                            select car).ToList();
+
+                var sum_price = (from sum in db.Carts
+                                 where sum.U_Id == s
+                                 select sum).Sum(S => S.BS_Fair).ToString();
+                ViewBag.SP = sum_price;
+                return View(data);
+
+            }
+
+            else if (data1 == "Farm Gate           ")
+            {
+                Cart c = new Cart();
+                c.U_Id = s;
+                c.B_Id = data3;
+                c.BS_Fair = data2;
+                c.Stopage = data1;
+                db.Carts.Add(c);
+                db.SaveChanges();
+
+                var data = (from car in db.Carts
+                            where car.U_Id == s
+                            select car).ToList();
+
+                var sum_price = (from sum in db.Carts
+                                 where sum.U_Id == s
+                                 select sum).Sum(S => S.BS_Fair).ToString();
+                ViewBag.SP = sum_price;
+                return View(data);
+            }
+            
+            return View();
+        }
+
+
+        [Authorize]
+        public ActionResult CartDetail()
+        {
+            CircularBusEntities db = new CircularBusEntities();
+            int s = (int)Session["userid"];
+            var data = (from car in db.Carts
+                        where car.U_Id == s
+                        select car).ToList();
+
+            var sum_price = (from sum in db.Carts
+                             where sum.U_Id == s
+                             select sum).Sum(S=>S.BS_Fair).ToString();
+            ViewBag.SumPrice = sum_price;
+            return View(data);
+
+        }
+
+        [HttpGet]
+        public ActionResult DeleteTicket(int id)
+        {
+            CircularBusEntities db = new CircularBusEntities();
+            var data = (from c in db.Carts
+                        where c.CR_Id == id
+                        select c).FirstOrDefault();
+            return View(data);
+        }
+        [HttpPost]
+        public ActionResult DeleteTicket(Cart delete)
+        {
+            CircularBusEntities db = new CircularBusEntities();
+            var data = (from c in db.Carts
+                        where c.CR_Id == delete.CR_Id
+                        select c).FirstOrDefault();
+            db.Entry(data).CurrentValues.SetValues(delete);
+            db.Carts.Remove(data);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Home");
+
 
         }
 

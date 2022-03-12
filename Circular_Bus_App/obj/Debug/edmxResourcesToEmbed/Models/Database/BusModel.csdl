@@ -33,6 +33,9 @@
     <NavigationProperty Name="Supervisor" Relationship="Self.FK_BusInfo_Supervisor" FromRole="BusInfo" ToRole="Supervisor" />
     <NavigationProperty Name="BusRoutes" Relationship="Self.FK_BusRoute_BusInfo" FromRole="BusInfo" ToRole="BusRoute" />
     <NavigationProperty Name="SoldTickets" Relationship="Self.FK_SoldTickets_BusInfo" FromRole="BusInfo" ToRole="SoldTicket" />
+    <NavigationProperty Name="User" Relationship="CircularBusModel.FK_BusInfo_BusOwner1" FromRole="BusInfo" ToRole="User" />
+    <NavigationProperty Name="User1" Relationship="CircularBusModel.FK_BusInfo_Supervisor1" FromRole="BusInfo" ToRole="User" />
+    <NavigationProperty Name="Carts" Relationship="CircularBusModel.FK_Carts_BusInfo" FromRole="BusInfo" ToRole="Cart" />
   </EntityType>
   <EntityType Name="BusOwner">
     <Key>
@@ -111,6 +114,10 @@
     <Property Name="U_DateofBirth" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
     <Property Name="U_Role" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
     <NavigationProperty Name="SoldTickets" Relationship="Self.FK_SoldTickets_User" FromRole="Users" ToRole="SoldTicket" />
+    <Property Name="U_Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="BusInfoes" Relationship="CircularBusModel.FK_BusInfo_BusOwner1" FromRole="User" ToRole="BusInfo" />
+    <NavigationProperty Name="BusInfoes1" Relationship="CircularBusModel.FK_BusInfo_Supervisor1" FromRole="User" ToRole="BusInfo" />
+    <NavigationProperty Name="Carts" Relationship="CircularBusModel.FK_Carts_Users" FromRole="User" ToRole="Cart" />
   </EntityType>
   <Association Name="FK_BusInfo_BusOwner">
     <End Role="BusOwner" Type="Self.BusOwner" Multiplicity="0..1" />
@@ -200,5 +207,82 @@
       <End Role="Users" EntitySet="Users" />
       <End Role="SoldTicket" EntitySet="SoldTickets" />
     </AssociationSet>
+    <AssociationSet Name="FK_BusInfo_BusOwner1" Association="CircularBusModel.FK_BusInfo_BusOwner1">
+      <End Role="User" EntitySet="Users" />
+      <End Role="BusInfo" EntitySet="BusInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BusInfo_Supervisor1" Association="CircularBusModel.FK_BusInfo_Supervisor1">
+      <End Role="User" EntitySet="Users" />
+      <End Role="BusInfo" EntitySet="BusInfoes" />
+    </AssociationSet>
+    <EntitySet Name="Carts" EntityType="CircularBusModel.Cart" />
+    <AssociationSet Name="FK_Carts_BusInfo" Association="CircularBusModel.FK_Carts_BusInfo">
+      <End Role="BusInfo" EntitySet="BusInfoes" />
+      <End Role="Cart" EntitySet="Carts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Carts_Users" Association="CircularBusModel.FK_Carts_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Cart" EntitySet="Carts" />
+    </AssociationSet>
   </EntityContainer>
+  <Association Name="FK_BusInfo_BusOwner1">
+    <End Type="CircularBusModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="CircularBusModel.BusInfo" Role="BusInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="U_Id" />
+      </Principal>
+      <Dependent Role="BusInfo">
+        <PropertyRef Name="B_OwnedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BusInfo_Supervisor1">
+    <End Type="CircularBusModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="CircularBusModel.BusInfo" Role="BusInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="U_Id" />
+      </Principal>
+      <Dependent Role="BusInfo">
+        <PropertyRef Name="B_SId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Cart">
+    <Key>
+      <PropertyRef Name="CR_Id" />
+    </Key>
+    <Property Name="CR_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="U_Id" Type="Int32" />
+    <Property Name="B_Id" Type="Int32" />
+    <Property Name="Stopage" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="BS_Fair" Type="Int32" />
+    <NavigationProperty Name="BusInfo" Relationship="CircularBusModel.FK_Carts_BusInfo" FromRole="Cart" ToRole="BusInfo" />
+    <NavigationProperty Name="User" Relationship="CircularBusModel.FK_Carts_Users" FromRole="Cart" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_Carts_BusInfo">
+    <End Type="CircularBusModel.BusInfo" Role="BusInfo" Multiplicity="0..1" />
+    <End Type="CircularBusModel.Cart" Role="Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BusInfo">
+        <PropertyRef Name="B_Id" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="B_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Carts_Users">
+    <End Type="CircularBusModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="CircularBusModel.Cart" Role="Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="U_Id" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="U_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

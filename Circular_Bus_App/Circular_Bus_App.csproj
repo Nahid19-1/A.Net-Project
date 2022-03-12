@@ -162,6 +162,9 @@
     <Compile Include="Models\Database\BusRoute.cs">
       <DependentUpon>BusModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Database\Cart.cs">
+      <DependentUpon>BusModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Database\SoldTicket.cs">
       <DependentUpon>BusModel.tt</DependentUpon>
     </Compile>
@@ -234,6 +237,10 @@
     <Content Include="Views\User\Profile.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\User\Purchase.cshtml" />
+    <Content Include="Views\User\Cart.cshtml" />
+    <Content Include="Views\User\CartDetail.cshtml" />
+    <Content Include="Views\User\DeleteTicket.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

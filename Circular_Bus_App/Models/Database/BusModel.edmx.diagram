@@ -17,6 +17,11 @@
         <AssociationConnector Association="CircularBusModel.FK_BusRoute_BusInfo" ManuallyRouted="false" />
         <AssociationConnector Association="CircularBusModel.FK_SoldTickets_BusInfo" ManuallyRouted="false" />
         <AssociationConnector Association="CircularBusModel.FK_SoldTickets_User" ManuallyRouted="false" />
+        <AssociationConnector Association="CircularBusModel.FK_BusInfo_BusOwner1" />
+        <AssociationConnector Association="CircularBusModel.FK_BusInfo_Supervisor1" />
+        <EntityTypeShape EntityType="CircularBusModel.Cart" Width="1.5" PointX="8.25" PointY="0.75" />
+        <AssociationConnector Association="CircularBusModel.FK_Carts_BusInfo" />
+        <AssociationConnector Association="CircularBusModel.FK_Carts_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

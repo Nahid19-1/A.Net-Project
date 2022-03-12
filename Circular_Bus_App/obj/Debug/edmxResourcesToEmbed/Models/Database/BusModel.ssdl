@@ -60,6 +60,16 @@
     <Property Name="BR_FairInS2" Type="int" />
     <Property Name="BR_FairInS3" Type="int" />
   </EntityType>
+  <EntityType Name="Carts">
+    <Key>
+      <PropertyRef Name="CR_Id" />
+    </Key>
+    <Property Name="CR_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="U_Id" Type="int" />
+    <Property Name="B_Id" Type="int" />
+    <Property Name="Stopage" Type="nchar" MaxLength="30" />
+    <Property Name="BS_Fair" Type="int" />
+  </EntityType>
   <EntityType Name="SoldTicket">
     <Key>
       <PropertyRef Name="ST_Id" />
@@ -101,13 +111,14 @@
     <Property Name="U_Gender" Type="nchar" MaxLength="6" />
     <Property Name="U_DateofBirth" Type="nchar" MaxLength="20" />
     <Property Name="U_Role" Type="nchar" MaxLength="10" />
+    <Property Name="U_Status" Type="nchar" MaxLength="10" />
   </EntityType>
   <Association Name="FK_BusInfo_BusOwner">
-    <End Role="BusOwner" Type="Self.BusOwner" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
     <End Role="BusInfo" Type="Self.BusInfo" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="BusOwner">
-        <PropertyRef Name="O_Id" />
+      <Principal Role="Users">
+        <PropertyRef Name="U_Id" />
       </Principal>
       <Dependent Role="BusInfo">
         <PropertyRef Name="B_OwnedBy" />
@@ -115,11 +126,11 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_BusInfo_Supervisor">
-    <End Role="Supervisor" Type="Self.Supervisor" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
     <End Role="BusInfo" Type="Self.BusInfo" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Supervisor">
-        <PropertyRef Name="S_Id" />
+      <Principal Role="Users">
+        <PropertyRef Name="U_Id" />
       </Principal>
       <Dependent Role="BusInfo">
         <PropertyRef Name="B_SId" />
@@ -135,6 +146,30 @@
       </Principal>
       <Dependent Role="BusRoute">
         <PropertyRef Name="BR_BId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Carts_BusInfo">
+    <End Role="BusInfo" Type="Self.BusInfo" Multiplicity="0..1" />
+    <End Role="Carts" Type="Self.Carts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BusInfo">
+        <PropertyRef Name="B_Id" />
+      </Principal>
+      <Dependent Role="Carts">
+        <PropertyRef Name="B_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Carts_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Carts" Type="Self.Carts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="U_Id" />
+      </Principal>
+      <Dependent Role="Carts">
+        <PropertyRef Name="U_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -167,20 +202,29 @@
     <EntitySet Name="BusInfo" EntityType="Self.BusInfo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BusOwner" EntityType="Self.BusOwner" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BusRoute" EntityType="Self.BusRoute" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Carts" EntityType="Self.Carts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SoldTicket" EntityType="Self.SoldTicket" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Supervisor" EntityType="Self.Supervisor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_BusInfo_BusOwner" Association="Self.FK_BusInfo_BusOwner">
-      <End Role="BusOwner" EntitySet="BusOwner" />
+      <End Role="Users" EntitySet="Users" />
       <End Role="BusInfo" EntitySet="BusInfo" />
     </AssociationSet>
     <AssociationSet Name="FK_BusInfo_Supervisor" Association="Self.FK_BusInfo_Supervisor">
-      <End Role="Supervisor" EntitySet="Supervisor" />
+      <End Role="Users" EntitySet="Users" />
       <End Role="BusInfo" EntitySet="BusInfo" />
     </AssociationSet>
     <AssociationSet Name="FK_BusRoute_BusInfo" Association="Self.FK_BusRoute_BusInfo">
       <End Role="BusInfo" EntitySet="BusInfo" />
       <End Role="BusRoute" EntitySet="BusRoute" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Carts_BusInfo" Association="Self.FK_Carts_BusInfo">
+      <End Role="BusInfo" EntitySet="BusInfo" />
+      <End Role="Carts" EntitySet="Carts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Carts_Users" Association="Self.FK_Carts_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Carts" EntitySet="Carts" />
     </AssociationSet>
     <AssociationSet Name="FK_SoldTickets_BusInfo" Association="Self.FK_SoldTickets_BusInfo">
       <End Role="BusInfo" EntitySet="BusInfo" />

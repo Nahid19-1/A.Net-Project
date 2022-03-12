@@ -22,7 +22,7 @@
     @Html.ValidationMessageFor(model => model.U_Gender, "", new { @class = "text-danger" })
     <input type="text" name="U_DateofBirth" value="@Model.U_DateofBirth" placeholder="DateofBirth" class="form-control" />
     @Html.ValidationMessageFor(model => model.U_DateofBirth, "", new { @class = "text-danger" })
-    <input type="hidden" name="U_Role" value="User" class="form-control" />
+    <input type="text" name="U_Role" value="@Model.U_Role" placeholder="Role"class="form-control" />
 
 
     <input type="submit" value="Add" />

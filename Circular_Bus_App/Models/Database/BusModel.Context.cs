@@ -32,5 +32,6 @@ namespace Circular_Bus_App.Models.Database
         public virtual DbSet<SoldTicket> SoldTickets { get; set; }
         public virtual DbSet<Supervisor> Supervisors { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Cart> Carts { get; set; }
     }
 }

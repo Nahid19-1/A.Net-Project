@@ -98,6 +98,7 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="CircularBusModel.User">
         <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="U_Status" ColumnName="U_Status" />
           <ScalarProperty Name="U_Id" ColumnName="U_Id" />
           <ScalarProperty Name="U_UserName" ColumnName="U_UserName" />
           <ScalarProperty Name="U_Password" ColumnName="U_Password" />
@@ -107,6 +108,17 @@
           <ScalarProperty Name="U_Gender" ColumnName="U_Gender" />
           <ScalarProperty Name="U_DateofBirth" ColumnName="U_DateofBirth" />
           <ScalarProperty Name="U_Role" ColumnName="U_Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Carts">
+      <EntityTypeMapping TypeName="CircularBusModel.Cart">
+        <MappingFragment StoreEntitySet="Carts">
+          <ScalarProperty Name="BS_Fair" ColumnName="BS_Fair" />
+          <ScalarProperty Name="Stopage" ColumnName="Stopage" />
+          <ScalarProperty Name="B_Id" ColumnName="B_Id" />
+          <ScalarProperty Name="U_Id" ColumnName="U_Id" />
+          <ScalarProperty Name="CR_Id" ColumnName="CR_Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
