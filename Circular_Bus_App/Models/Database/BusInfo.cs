@@ -19,7 +19,6 @@ namespace Circular_Bus_App.Models.Database
         {
             this.BusRoutes = new HashSet<BusRoute>();
             this.SoldTickets = new HashSet<SoldTicket>();
-            this.Carts = new HashSet<Cart>();
         }
     
         public int B_Id { get; set; }
@@ -34,15 +33,11 @@ namespace Circular_Bus_App.Models.Database
         public Nullable<int> B_SId { get; set; }
         public string B_Status { get; set; }
     
-        public virtual BusOwner BusOwner { get; set; }
-        public virtual Supervisor Supervisor { get; set; }
+        public virtual User User { get; set; }
+        public virtual User User1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BusRoute> BusRoutes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SoldTicket> SoldTickets { get; set; }
-        public virtual User User { get; set; }
-        public virtual User User1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cart> Carts { get; set; }
     }
 }

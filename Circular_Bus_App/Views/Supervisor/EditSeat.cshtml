@@ -1,0 +1,13 @@
+﻿@model Circular_Bus_App.Models.Database.BusInfo
+    @{
+        ViewBag.Title = "EditSeat";
+        Layout = "~/Views/Shared/_SupervisorLayout.cshtml";
+    }
+
+    <h2>Upate Available Seat</h2>
+
+    <form action="/Supervisor/EditSeat" method="post">
+        <input type="hidden"  name="B_Id" value="@Model.B_Id"/>
+        <input type="text" name="B_AvailableSeat" placeholder="AvailableSeat" class="form-control" />
+        <input type="submit" value="Update" />
+    </form>

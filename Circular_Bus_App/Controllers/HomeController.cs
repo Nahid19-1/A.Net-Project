@@ -15,7 +15,6 @@ namespace Circular_Bus_App.Controllers
             CircularBusEntities db = new CircularBusEntities();
             var data = db.BusRoutes.ToList();
             return View(data);
-            
         }
 
         [HttpGet]

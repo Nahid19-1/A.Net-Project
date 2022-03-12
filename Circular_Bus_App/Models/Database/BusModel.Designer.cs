@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Study\UN\Semister 10\ADVANCED PROGRAMMING WITH .NET [A]\Codes\Circular_Bus_App\Models\Database\BusModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\USER\Downloads\A.Net-Project-main(4)\A.Net-Project-main\Circular_Bus_App\Models\Database\BusModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
