@@ -11,7 +11,8 @@ namespace Circular_Bus_App.Models.Database
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,13 +25,21 @@ namespace Circular_Bus_App.Models.Database
         }
     
         public int U_Id { get; set; }
+        
         public string U_UserName { get; set; }
+       
         public string U_Password { get; set; }
+       
         public string U_Phone { get; set; }
+        
         public string U_Email { get; set; }
+      
         public string U_Address { get; set; }
+        
         public string U_Gender { get; set; }
+        
         public string U_DateofBirth { get; set; }
+       
         public string U_Role { get; set; }
         public string U_Status { get; set; }
     

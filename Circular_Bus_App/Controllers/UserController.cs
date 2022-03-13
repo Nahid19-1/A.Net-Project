@@ -46,12 +46,17 @@ namespace Circular_Bus_App.Controllers
                 //SJ
                 else if (Session["role"].ToString() == "Supervisor")
                 {
-                    return RedirectToAction("Dashboard", "Supervisor");
+                    return RedirectToAction("Welcome", "Supervisor");
                 }
                 //RG
                 else if (data.U_Role == "BusOwner  ")
                 {
                     return RedirectToAction("Index", "BusOwner");
+
+                }
+                else if(data.U_Role == "Admin     ")
+                {
+                    return RedirectToAction("Login", "Admin");
 
                 }
 
@@ -110,7 +115,7 @@ namespace Circular_Bus_App.Controllers
 
         }
 
-        //[UserAccess]
+        [UserAccess]
         [HttpGet]
         public ActionResult BusDetails()
         {
@@ -121,6 +126,8 @@ namespace Circular_Bus_App.Controllers
 
         [HttpGet]
         [Authorize]
+        [UserAccess]
+
         public ActionResult Profile(User user)
         {
             string loggedUserName = Session["username"].ToString();
@@ -172,6 +179,7 @@ namespace Circular_Bus_App.Controllers
             return View(data);
         }
         [HttpPost]
+
         public ActionResult Delete(User delete)
         {
             CircularBusEntities db = new CircularBusEntities();
@@ -197,12 +205,16 @@ namespace Circular_Bus_App.Controllers
         }
 
         [HttpGet]
-        public ActionResult Cart(string data1,int data2,int data3)
+
+        public ActionResult Cart(string data1, int data2, int data3, int data4)
         {
             CircularBusEntities db = new CircularBusEntities();
             int s = (int)Session["userid"];
+            var br = (from r in db.BusRoutes
+                      where r.BR_Id == data4
+                      select r).FirstOrDefault();
 
-            if (data1 == "Bashundhara         ")
+            if (data1 == br.BR_Stopage1)
             {
                 Cart c = new Cart();
                 c.U_Id = s;
@@ -212,7 +224,7 @@ namespace Circular_Bus_App.Controllers
                 db.Carts.Add(c);
                 db.SaveChanges();
 
-                var data = (from car in db.Carts 
+                var data = (from car in db.Carts
                             where car.U_Id == s
                             select car).ToList();
 
@@ -223,7 +235,7 @@ namespace Circular_Bus_App.Controllers
                 return View(data);
             }
 
-            else if (data1 == "Gulshan 1           ")
+            else if (data1 == br.BR_Stopage2)
             {
                 Cart c = new Cart();
                 c.U_Id = s;
@@ -245,7 +257,7 @@ namespace Circular_Bus_App.Controllers
 
             }
 
-            else if (data1 == "Farm Gate           ")
+            else if (data1 == br.BR_Stopage3)
             {
                 Cart c = new Cart();
                 c.U_Id = s;
@@ -265,12 +277,14 @@ namespace Circular_Bus_App.Controllers
                 ViewBag.SP = sum_price;
                 return View(data);
             }
-            
+
             return View();
         }
 
 
+
         [Authorize]
+
         public ActionResult CartDetail()
         {
             CircularBusEntities db = new CircularBusEntities();
@@ -306,7 +320,8 @@ namespace Circular_Bus_App.Controllers
             db.Entry(data).CurrentValues.SetValues(delete);
             db.Carts.Remove(data);
             db.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("CartDetail", "User");
+
 
 
         }

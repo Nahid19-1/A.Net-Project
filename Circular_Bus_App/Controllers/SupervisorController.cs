@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Circular_Bus_App.Auth;
 using Circular_Bus_App.Models.Database;
 
 namespace Circular_Bus_App.Controllers
@@ -10,7 +11,7 @@ namespace Circular_Bus_App.Controllers
     public class SupervisorController : Controller
     {
         // GET: Supervisor
-        public ActionResult Index()
+        public ActionResult Welcome()
         {
             return View();
         }
@@ -54,6 +55,7 @@ namespace Circular_Bus_App.Controllers
             return RedirectToAction("LoginUser", "User");
         }
 
+        [SupervisorAccess]
         [HttpGet]
         public ActionResult Dashboard(User super)
         {
@@ -69,6 +71,7 @@ namespace Circular_Bus_App.Controllers
             return View(data);
         }
 
+        [SupervisorAccess]
         [HttpGet]
         public ActionResult AssignedBuses(User super)
         {
@@ -85,25 +88,7 @@ namespace Circular_Bus_App.Controllers
             return View(data);
         }
 
-        /*[HttpPost]
-        public ActionResult AssignedBuses(BusInfo info)
-        {
-            CircularBusEntities db = new CircularBusEntities(); ;
-
-            var data = (from s in db.BusInfoes
-                        where s.B_Id == info.B_Id
-                        select s).FirstOrDefault();
-
-            data.B_AvailableSeat = info.B_AvailableSeat;
-
-            /*BusInfo newinfo = new BusInfo();
-            newinfo.B_AvailableSeat = seat;
-
-            db.Entry(data).CurrentValues.SetValues(info);
-            db.SaveChanges();
-            data.ToString();
-            return View(data);
-        }*/
+   
 
         [HttpGet]
         public ActionResult EditSeat(int id)
@@ -125,7 +110,7 @@ namespace Circular_Bus_App.Controllers
                         select b).FirstOrDefault();
             db.Entry(data).CurrentValues.SetValues(info);
             db.SaveChanges();
-            return RedirectToAction("AvailableSeat", "Supervisor");
+            return RedirectToAction("AssignedBuses", "Supervisor");
 
         }
     }

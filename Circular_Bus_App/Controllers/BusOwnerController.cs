@@ -9,6 +9,7 @@ using System.Web.Security;
 
 namespace Circular_Bus_App.Controllers
 {
+    [Authorize]
     [BusOwnerAccess]
     public class BusOwnerController : Controller
     {
@@ -36,7 +37,7 @@ namespace Circular_Bus_App.Controllers
             CircularBusEntities db = new CircularBusEntities();
             int s = (int)Session["userid"];
             var data = (from u in db.BusInfoes
-                        where u.B_OwnedBy == s && u.B_Status == "Active              "
+                        where u.B_OwnedBy == s && u.B_Status == "Active"
                         select u).ToList();
 
             return View(data);
@@ -68,6 +69,18 @@ namespace Circular_Bus_App.Controllers
             }
             return View();
         }
+
+        [HttpGet]
+        public ActionResult BusOwnerDelete(int id)
+        {
+            CircularBusEntities db = new CircularBusEntities();
+            var data = (from u in db.Users
+                        where u.U_Id == id
+                        select u).FirstOrDefault();
+            db.Users.Remove(data);
+            db.SaveChanges();
+            return RedirectToAction("LoginUser", "User");
+        }
         public ActionResult BusEdit(int id)
         {
             CircularBusEntities db = new CircularBusEntities();
@@ -93,35 +106,24 @@ namespace Circular_Bus_App.Controllers
             }
             return View();
         }
-
         [HttpGet]
-        public ActionResult BusOwnerDelete(int id)
+        public ActionResult BusDelete(int id)
         {
             CircularBusEntities db = new CircularBusEntities();
-            var data = (from u in db.Users
-                        where u.U_Id == id
+            var data = (from u in db.BusInfoes
+                        where u.B_Id == id
                         select u).FirstOrDefault();
-            return View(data);
-        }
-
-        [HttpPost]
-        public ActionResult BusOwnerDelete(User delete)
-        {
-            CircularBusEntities db = new CircularBusEntities();
-            var data = (from u in db.Users
-                        where u.U_Id == delete.U_Id
-                        select u).FirstOrDefault();
-            db.Entry(data).CurrentValues.SetValues(delete);
-            db.Users.Remove(data);
+            db.BusInfoes.Remove(data);
             db.SaveChanges();
-            return RedirectToAction("LoginUser");
-
+            return RedirectToAction("Buses", "BusOwner");
         }
+
+
 
         public ActionResult LogoutUser()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("LoginUser");
+            return RedirectToAction("LoginUser", "User");
         }
         public ActionResult AddBus()
         {
@@ -157,5 +159,75 @@ namespace Circular_Bus_App.Controllers
 
             return View(tbl);
         }
+
+        public ActionResult BusRoute(int id)
+        {
+            CircularBusEntities db = new CircularBusEntities();
+            var data = (from u in db.BusInfoes
+                        where u.B_Id == id
+                        select u).FirstOrDefault();
+            return View(data);
+        }
+
+        [HttpPost]
+        public ActionResult BusRoute(BusRoute b)
+        {
+            if (ModelState.IsValid)
+            {
+                CircularBusEntities db = new CircularBusEntities();
+                db.BusRoutes.Add(b);
+                db.SaveChanges();
+                return RedirectToAction("Buses", "BusOwner");
+
+            }
+            return View();
+        }
+        public ActionResult BusRouteView(int id)
+        {
+            CircularBusEntities db = new CircularBusEntities();
+            var data = (from u in db.BusRoutes
+                        where u.BR_BId == id
+                        select u).ToList();
+            return View(data);
+        }
+
+        public ActionResult BusRouteEdit(int id)
+        {
+            CircularBusEntities db = new CircularBusEntities();
+            var data = (from u in db.BusRoutes
+                        where u.BR_Id == id
+                        select u).FirstOrDefault();
+            return View(data);
+        }
+
+        [HttpPost]
+        public ActionResult BusRouteEdit(BusRoute b)
+        {
+            if (ModelState.IsValid)
+            {
+                CircularBusEntities db = new CircularBusEntities();
+                var data = (from u in db.BusRoutes
+                            where u.BR_Id == b.BR_Id
+                            select u).FirstOrDefault();
+                db.Entry(data).CurrentValues.SetValues(b);
+                db.SaveChanges();
+                return RedirectToAction("Buses", "BusOwner");
+
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult BusRouteDelete(int id)
+        {
+            CircularBusEntities db = new CircularBusEntities();
+            var data = (from u in db.BusRoutes
+                        where u.BR_Id == id
+                        select u).FirstOrDefault();
+            db.BusRoutes.Remove(data);
+            db.SaveChanges();
+            return RedirectToAction("Buses", "BusOwner");
+        }
+
     }
 }

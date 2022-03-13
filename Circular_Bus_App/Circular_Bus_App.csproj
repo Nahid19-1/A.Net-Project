@@ -130,7 +130,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Auth\BusOwnerAccess.cs" />
+    <Compile Include="Auth\SupervisorAccess.cs" />
     <Compile Include="Auth\UserAccess.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BusOwnerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SupervisorController.cs" />
@@ -257,6 +259,19 @@
     <Content Include="Views\BusOwner\AddBus.cshtml" />
     <Content Include="Views\BusOwner\ViewSell.cshtml" />
     <Content Include="Views\BusOwner\Index.cshtml" />
+    <Content Include="Views\BusOwner\BusRoute.cshtml" />
+    <Content Include="Views\BusOwner\BusRouteView.cshtml" />
+    <Content Include="Views\BusOwner\BusRouteEdit.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\Admin\UserList.cshtml" />
+    <Content Include="Views\Admin\AddUser.cshtml" />
+    <Content Include="Views\Admin\BusInfoList.cshtml" />
+    <Content Include="Views\Admin\BusOwnerList.cshtml" />
+    <Content Include="Views\Admin\BusRouteList.cshtml" />
+    <Content Include="Views\Admin\SoldTicketList.cshtml" />
+    <Content Include="Views\Admin\SupervisorList.cshtml" />
+    <Content Include="Views\Supervisor\Welcome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
