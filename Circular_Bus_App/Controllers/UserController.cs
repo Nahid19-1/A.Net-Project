@@ -142,6 +142,7 @@ namespace Circular_Bus_App.Controllers
             return View(data);
         }
 
+        [UserAccess]
         [HttpGet]
         public ActionResult Edit(int id)
         {
@@ -165,7 +166,7 @@ namespace Circular_Bus_App.Controllers
                 return RedirectToAction("Index", "Home");
 
             }
-            return View();
+            return View(new_User);
         }
 
 
