@@ -95,6 +95,7 @@
     <Compile Include="Repo\BusRepo.cs" />
     <Compile Include="Repo\SupervisorRepo.cs" />
     <Compile Include="Repo\UserRepo.cs" />
+    <Compile Include="UserDataAccessFectory.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Database\CBUS.edmx">
