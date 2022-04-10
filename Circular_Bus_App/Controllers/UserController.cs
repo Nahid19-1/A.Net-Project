@@ -34,26 +34,36 @@ namespace Circular_Bus_App.Controllers
             if (data != null)
             {               
                 FormsAuthentication.SetAuthCookie(data.U_UserName, true);
+
                 Session["role"] = data.U_Role;
                 Session["userid"] = data.U_Id;
                 Session["username"] = data.U_UserName;
 
-                if (Session["role"].ToString() == "Supervisor" )
-                    {
-                    /*  var sdata = (from s in db.Supervisors
-                                    where s.S_Id.Equals(user.S_Id) )
-                                    select s).FirstOrDefault();
+                if (Session["role"].ToString() == "User      ")
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                //SJ
+                else if (Session["role"].ToString() == "Supervisor")
+                {
+                    return RedirectToAction("Welcome", "Supervisor");
+                }
+                //RG
+                else if (data.U_Role == "BusOwner  ")
+                {
+                    return RedirectToAction("Index", "BusOwner");
 
-                    Session["userid"] = sdata.S_Id;
-                    Session["username"] = sdata.S_UserName;*/
+                }
+                else if(data.U_Role == "Admin     ")
+                {
+                    return RedirectToAction("Login", "Admin");
 
-                    return RedirectToAction("Dashboard", "Supervisor");
-                    }
+                }
 
-                return RedirectToAction("Index", "Home");
+
             }
 
-            TempData["msg"] = "Invalid Crdentials";
+            TempData["msg"] = "Invalid Username or Password";
             return RedirectToAction("LoginUser");
         }
 
@@ -65,14 +75,14 @@ namespace Circular_Bus_App.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            return View(new User());
         }
 
         [HttpPost]
         public ActionResult Create(User u)
         {
-
-            if (ModelState.IsValid)
+            
+            if(ModelState.IsValid)
             {
                 CircularBusEntities db = new CircularBusEntities();
 
@@ -85,9 +95,9 @@ namespace Circular_Bus_App.Controllers
                     us.U_Phone = u.U_Phone;
                     us.U_Email = u.U_Email;
                     us.U_Address = u.U_Address;
-                    us.U_Gender= u.U_Gender;
-                    us.U_DateofBirth= u.U_DateofBirth;
-                    us.U_Role= u.U_Role;
+                    us.U_Gender = u.U_Gender;
+                    us.U_DateofBirth = u.U_DateofBirth;
+                    us.U_Role = u.U_Role;
                     us.U_Status = "Pending";
 
                     db.Users.Add(us);
@@ -95,7 +105,8 @@ namespace Circular_Bus_App.Controllers
                     return RedirectToAction("LoginUser");
 
                 }
-
+            
+                
                 db.Users.Add(u);
                 db.SaveChanges();
                 return RedirectToAction("LoginUser");
@@ -104,7 +115,7 @@ namespace Circular_Bus_App.Controllers
 
         }
 
-        //[UserAccess]
+        [UserAccess]
         [HttpGet]
         public ActionResult BusDetails()
         {
@@ -115,6 +126,8 @@ namespace Circular_Bus_App.Controllers
 
         [HttpGet]
         [Authorize]
+        [UserAccess]
+
         public ActionResult Profile(User user)
         {
             string loggedUserName = Session["username"].ToString();
@@ -129,6 +142,7 @@ namespace Circular_Bus_App.Controllers
             return View(data);
         }
 
+        [UserAccess]
         [HttpGet]
         public ActionResult Edit(int id)
         {
@@ -152,7 +166,7 @@ namespace Circular_Bus_App.Controllers
                 return RedirectToAction("Index", "Home");
 
             }
-            return View();
+            return View(new_User);
         }
 
 
@@ -166,6 +180,7 @@ namespace Circular_Bus_App.Controllers
             return View(data);
         }
         [HttpPost]
+
         public ActionResult Delete(User delete)
         {
             CircularBusEntities db = new CircularBusEntities();
@@ -176,6 +191,139 @@ namespace Circular_Bus_App.Controllers
             db.Users.Remove(data);
             db.SaveChanges();
             return RedirectToAction("LoginUser");
+
+        }
+
+        [HttpGet]
+        public ActionResult Purchase(int id)
+        {
+            CircularBusEntities db = new CircularBusEntities();
+            var data = (from b in db.BusRoutes
+                        where b.BR_BId == id
+                        select b).FirstOrDefault();
+            return View(data);
+            
+        }
+
+        [HttpGet]
+
+        public ActionResult Cart(string data1, int data2, int data3, int data4)
+        {
+            CircularBusEntities db = new CircularBusEntities();
+            int s = (int)Session["userid"];
+            var br = (from r in db.BusRoutes
+                      where r.BR_Id == data4
+                      select r).FirstOrDefault();
+
+            if (data1 == br.BR_Stopage1)
+            {
+                Cart c = new Cart();
+                c.U_Id = s;
+                c.B_Id = data3;
+                c.BS_Fair = data2;
+                c.Stopage = data1;
+                db.Carts.Add(c);
+                db.SaveChanges();
+
+                var data = (from car in db.Carts
+                            where car.U_Id == s
+                            select car).ToList();
+
+                var sum_price = (from sum in db.Carts
+                                 where sum.U_Id == s
+                                 select sum).Sum(S => S.BS_Fair).ToString();
+                ViewBag.SP = sum_price;
+                return View(data);
+            }
+
+            else if (data1 == br.BR_Stopage2)
+            {
+                Cart c = new Cart();
+                c.U_Id = s;
+                c.B_Id = data3;
+                c.BS_Fair = data2;
+                c.Stopage = data1;
+                db.Carts.Add(c);
+                db.SaveChanges();
+
+                var data = (from car in db.Carts
+                            where car.U_Id == s
+                            select car).ToList();
+
+                var sum_price = (from sum in db.Carts
+                                 where sum.U_Id == s
+                                 select sum).Sum(S => S.BS_Fair).ToString();
+                ViewBag.SP = sum_price;
+                return View(data);
+
+            }
+
+            else if (data1 == br.BR_Stopage3)
+            {
+                Cart c = new Cart();
+                c.U_Id = s;
+                c.B_Id = data3;
+                c.BS_Fair = data2;
+                c.Stopage = data1;
+                db.Carts.Add(c);
+                db.SaveChanges();
+
+                var data = (from car in db.Carts
+                            where car.U_Id == s
+                            select car).ToList();
+
+                var sum_price = (from sum in db.Carts
+                                 where sum.U_Id == s
+                                 select sum).Sum(S => S.BS_Fair).ToString();
+                ViewBag.SP = sum_price;
+                return View(data);
+            }
+
+            return View();
+        }
+
+
+
+        [Authorize]
+
+        public ActionResult CartDetail()
+        {
+            CircularBusEntities db = new CircularBusEntities();
+            int s = (int)Session["userid"];
+            var data = (from car in db.Carts
+                        where car.U_Id == s
+                        select car).ToList();
+
+            var sum_price = (from sum in db.Carts
+                             where sum.U_Id == s
+                             select sum).Sum(S=>S.BS_Fair).ToString();
+            ViewBag.SumPrice = sum_price;
+            return View(data);
+
+        }
+
+        [HttpGet]
+        public ActionResult DeleteTicket(int id)
+        {
+            CircularBusEntities db = new CircularBusEntities();
+            var data = (from c in db.Carts
+                        where c.CR_Id == id
+                        select c).FirstOrDefault();
+            return View(data);
+        }
+        [HttpPost]
+        public ActionResult DeleteTicket(Cart delete)
+        {
+            CircularBusEntities db = new CircularBusEntities();
+            var data = (from c in db.Carts
+                        where c.CR_Id == delete.CR_Id
+                        select c).FirstOrDefault();
+            db.Entry(data).CurrentValues.SetValues(delete);
+            db.Carts.Remove(data);
+            db.SaveChanges();
+            return RedirectToAction("CartDetail", "User");
+
+
 
         }
 

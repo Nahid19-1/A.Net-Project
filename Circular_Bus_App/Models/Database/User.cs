@@ -11,33 +11,49 @@ namespace Circular_Bus_App.Models.Database
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
+            this.SoldTickets = new HashSet<SoldTicket>();
             this.BusInfoes = new HashSet<BusInfo>();
             this.BusInfoes1 = new HashSet<BusInfo>();
-            this.SoldTickets = new HashSet<SoldTicket>();
+            this.Carts = new HashSet<Cart>();
         }
     
         public int U_Id { get; set; }
+        [Required(ErrorMessage = "Please Fill the Name")]
         public string U_UserName { get; set; }
+        [Required]
+        [RegularExpression(@"^\d{8,}$", ErrorMessage = "Password must be atlist 8 charecte")]
         public string U_Password { get; set; }
+        [Required]
+        [RegularExpression(@"^01(\d{9})$", ErrorMessage = "Mobile number must be 11 digits and start with 01")]
         public string U_Phone { get; set; }
+        [Required]
         public string U_Email { get; set; }
+        [Required]
         public string U_Address { get; set; }
+        [Required]
         public string U_Gender { get; set; }
+        [Required]
+        [RegularExpression(@"^\d{2}-\d{2}-\d{4}$", ErrorMessage = "Date of Birth Must follow XX-XX-XXXX")]
         public string U_DateofBirth { get; set; }
+        [Required]
+
         public string U_Role { get; set; }
         public string U_Status { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SoldTicket> SoldTickets { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BusInfo> BusInfoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BusInfo> BusInfoes1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SoldTicket> SoldTickets { get; set; }
+        public virtual ICollection<Cart> Carts { get; set; }
     }
 }

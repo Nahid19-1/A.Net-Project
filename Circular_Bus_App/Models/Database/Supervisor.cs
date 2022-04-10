@@ -14,6 +14,12 @@ namespace Circular_Bus_App.Models.Database
     
     public partial class Supervisor
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Supervisor()
+        {
+            this.BusInfoes = new HashSet<BusInfo>();
+        }
+    
         public int S_Id { get; set; }
         public string S_UserName { get; set; }
         public string S_Password { get; set; }
@@ -23,5 +29,8 @@ namespace Circular_Bus_App.Models.Database
         public string S_Gender { get; set; }
         public string S_DateofBirth { get; set; }
         public string S_Role { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BusInfo> BusInfoes { get; set; }
     }
 }

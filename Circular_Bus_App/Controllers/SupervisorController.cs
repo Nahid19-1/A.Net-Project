@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Circular_Bus_App.Auth;
 using Circular_Bus_App.Models.Database;
 
 namespace Circular_Bus_App.Controllers
@@ -10,7 +11,7 @@ namespace Circular_Bus_App.Controllers
     public class SupervisorController : Controller
     {
         // GET: Supervisor
-        public ActionResult Index()
+        public ActionResult Welcome()
         {
             return View();
         }
@@ -24,9 +25,9 @@ namespace Circular_Bus_App.Controllers
                         select s).FirstOrDefault();
             return View(data);
         }
-        
+
         [HttpPost]
-        public ActionResult Edit (User super)
+        public ActionResult Edit(User super)
         {
             if (ModelState.IsValid)
             {
@@ -41,34 +42,36 @@ namespace Circular_Bus_App.Controllers
             }
             return View();
         }
-       
+
         public ActionResult Delete(int id)
         {
             CircularBusEntities db = new CircularBusEntities();
             var data = (from s in db.Users
                         where s.U_Id == id
                         select s).FirstOrDefault();
-            
+
             db.Users.Remove(data);
             db.SaveChanges();
             return RedirectToAction("LoginUser", "User");
         }
 
+        [SupervisorAccess]
         [HttpGet]
         public ActionResult Dashboard(User super)
         {
             string loggedName = Session["username"].ToString();
             string id = Session["userid"].ToString();
             int loggedId = Int32.Parse(id);
-            CircularBusEntities db = new CircularBusEntities();; 
-            
+            CircularBusEntities db = new CircularBusEntities(); ;
+
             var data = (from s in db.Users
-                          where s.U_Id.Equals(loggedId) &&
-                          s.U_UserName.Equals(loggedName)
-                          select s).ToList();
+                        where s.U_Id.Equals(loggedId) &&
+                        s.U_UserName.Equals(loggedName)
+                        select s).ToList();
             return View(data);
         }
 
+        [SupervisorAccess]
         [HttpGet]
         public ActionResult AssignedBuses(User super)
         {
@@ -79,31 +82,13 @@ namespace Circular_Bus_App.Controllers
 
             CircularBusEntities db = new CircularBusEntities(); ;
 
-            var data = ( from s in db.BusInfoes
-                         where s.B_SId == loggedId
-                         select s).ToList();
+            var data = (from s in db.BusInfoes
+                        where s.B_SId == loggedId
+                        select s).ToList();
             return View(data);
         }
 
-        /*[HttpPost]
-        public ActionResult AssignedBuses(BusInfo info)
-        {
-            CircularBusEntities db = new CircularBusEntities(); ;
-
-            var data = (from s in db.BusInfoes
-                        where s.B_Id == info.B_Id
-                        select s).FirstOrDefault();
-
-            data.B_AvailableSeat = info.B_AvailableSeat;
-
-            /*BusInfo newinfo = new BusInfo();
-            newinfo.B_AvailableSeat = seat;
-
-            db.Entry(data).CurrentValues.SetValues(info);
-            db.SaveChanges();
-            data.ToString();
-            return View(data);
-        }*/
+   
 
         [HttpGet]
         public ActionResult EditSeat(int id)
@@ -118,15 +103,15 @@ namespace Circular_Bus_App.Controllers
         [HttpPost]
         public ActionResult EditSeat(BusInfo info)
         {
-                CircularBusEntities db = new CircularBusEntities();
+            CircularBusEntities db = new CircularBusEntities();
 
-                var data = (from b in db.BusInfoes
-                            where b.B_Id == info.B_Id
-                            select b).FirstOrDefault();
-                db.Entry(data).CurrentValues.SetValues(info);
-                db.SaveChanges();
-                return RedirectToAction("AvailableSeat", "Supervisor");         
-          
+            var data = (from b in db.BusInfoes
+                        where b.B_Id == info.B_Id
+                        select b).FirstOrDefault();
+            db.Entry(data).CurrentValues.SetValues(info);
+            db.SaveChanges();
+            return RedirectToAction("AssignedBuses", "Supervisor");
+
         }
     }
 }

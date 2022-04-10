@@ -14,6 +14,12 @@ namespace Circular_Bus_App.Models.Database
     
     public partial class BusOwner
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public BusOwner()
+        {
+            this.BusInfoes = new HashSet<BusInfo>();
+        }
+    
         public int O_Id { get; set; }
         public string O_UserName { get; set; }
         public string O_Password { get; set; }
@@ -23,5 +29,8 @@ namespace Circular_Bus_App.Models.Database
         public string O_Gender { get; set; }
         public string O_DateofBirth { get; set; }
         public string O_Role { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BusInfo> BusInfoes { get; set; }
     }
 }

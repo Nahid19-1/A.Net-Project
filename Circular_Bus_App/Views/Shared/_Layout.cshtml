@@ -23,6 +23,8 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Profile", "Profile", "User")</li>
                     <li>@Html.ActionLink("Logout", "LogoutUser", "User")</li>
+                    <li>@Html.ActionLink("Cart", "CartDetail", "User")</li>
+
                 </ul>
             </div>
         </div>
@@ -37,6 +39,8 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

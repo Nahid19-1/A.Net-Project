@@ -11,16 +11,29 @@ namespace Circular_Bus_App.Models.Database
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class BusRoute
     {
         public int BR_Id { get; set; }
         public Nullable<int> BR_BId { get; set; }
+        [Required]
+
         public string BR_Start { get; set; }
+        [Required]
+
         public string BR_End { get; set; }
+        [Required]
+
         public string BR_Stopage1 { get; set; }
+        [Required]
+
         public string BR_Stopage2 { get; set; }
+        [Required]
+
         public string BR_Stopage3 { get; set; }
+        [Required]
+
         public string BR_Time { get; set; }
         public Nullable<int> BR_FairInS1 { get; set; }
         public Nullable<int> BR_FairInS2 { get; set; }
