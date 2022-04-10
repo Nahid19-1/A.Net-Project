@@ -72,3 +72,6 @@ D:\Study\UN\Semister 10\ADVANCED PROGRAMMING WITH .NET [A]\A.Net-Project\Final\C
 D:\Study\UN\Semister 10\ADVANCED PROGRAMMING WITH .NET [A]\A.Net-Project\Final\CBPresentation_API\obj\Debug\CBPresentation_API.csproj.CopyComplete
 D:\Study\UN\Semister 10\ADVANCED PROGRAMMING WITH .NET [A]\A.Net-Project\Final\CBPresentation_API\obj\Debug\CBPresentation_API.dll
 D:\Study\UN\Semister 10\ADVANCED PROGRAMMING WITH .NET [A]\A.Net-Project\Final\CBPresentation_API\obj\Debug\CBPresentation_API.pdb
+D:\Study\UN\Semister 10\ADVANCED PROGRAMMING WITH .NET [A]\A.Net-Project\Final\CBPresentation_API\bin\System.Web.Cors.dll
+D:\Study\UN\Semister 10\ADVANCED PROGRAMMING WITH .NET [A]\A.Net-Project\Final\CBPresentation_API\bin\System.Web.Http.Cors.dll
+D:\Study\UN\Semister 10\ADVANCED PROGRAMMING WITH .NET [A]\A.Net-Project\Final\CBPresentation_API\bin\System.Web.Http.Cors.xml

@@ -23,7 +23,14 @@ namespace DAL.Repo
              db.SaveChanges();
              return db.Users.FirstOrDefault();
          }
-        
+
+        public List<User> Buslist(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
         /*
         public bool Add(User obj)
          {

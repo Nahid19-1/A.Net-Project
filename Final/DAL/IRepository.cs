@@ -13,5 +13,6 @@ namespace DAL
         List<T> Get();
         T Edit(T obj);
         T Delete(ID id);
+        List<T> Buslist(ID id);
     }
 }

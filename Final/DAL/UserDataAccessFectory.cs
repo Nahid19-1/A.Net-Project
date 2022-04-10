@@ -16,5 +16,10 @@ namespace DAL
         {
             return new UserRepo(db);
         }
+
+        public static IRepository<Cart, int> CartDataAccess()
+        {
+            return new CartRepo(db);
+        }
     }
 }

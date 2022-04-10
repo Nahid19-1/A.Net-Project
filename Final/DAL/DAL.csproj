@@ -93,6 +93,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repo\AdminRepo.cs" />
     <Compile Include="Repo\BusRepo.cs" />
+    <Compile Include="Repo\CartRepo.cs" />
     <Compile Include="Repo\SupervisorRepo.cs" />
     <Compile Include="Repo\UserRepo.cs" />
     <Compile Include="UserDataAccessFectory.cs" />
