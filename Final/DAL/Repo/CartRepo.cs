@@ -50,6 +50,8 @@ namespace DAL.Repo
             var data = (from c in db.Carts
                         where c.B_Id == id
                         select c).ToList();
+
+
             return data;
         }
 

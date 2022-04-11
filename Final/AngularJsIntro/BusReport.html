@@ -9,19 +9,19 @@
 			<script>
 					var app = angular.module('myapp',[]);
 
-			
+
 					app.controller('httpget',function($scope,$http){
-						$http.get("https://localhost:44399/api/cart")
+						$http.get("https://localhost:44399/api/cart/bus/5")
 						.then(function(response){
 							$scope.Carts = response.data;
-              $scope.sumVal = 100;
+						
 						});
 					});
 			</script>
 	</head>
 	
 	<body ng-app="myapp">
-
+		
 		<div ng-controller="httpget">
 			<table class="table table-bordered">
 				<thead>
@@ -46,7 +46,7 @@
            <td></td>
            <td></td>
            <td></td>
-           <td><b>{{sumVal}}</b></td>
+           <td><b>{{100}}</b></td>
 
 				</tbody>
         
@@ -54,5 +54,6 @@
 
 		</div>
 
+	
 	</body>
 </html>

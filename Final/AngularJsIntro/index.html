@@ -29,6 +29,7 @@
 						$http.get("https://localhost:44399/api/user")
 						.then(function(response){
 							$scope.Users = response.data;
+							
 
 						});
 					});
@@ -90,7 +91,7 @@
 			<div class="card-body" ng-repeat="p in Users">
 				<h5 class="card-title">{{p.U_UserName}}</h5>
 				<p class="card-text">{{p.U_Phone}}</p>
-				<a href="#" class="btn btn-primary">{{p.U_Address}}</a>
+				<a href="Cart.html" class="btn btn-primary">{{p.U_Address}}</a>
 			</div>
 		</div>
 

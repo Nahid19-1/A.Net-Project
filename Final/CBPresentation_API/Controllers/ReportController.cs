@@ -9,6 +9,7 @@ using System.Web.Http.Cors;
 
 namespace CBPresentation_API.Controllers
 {
+    //[EnableCors("req accept from domain", "header", "what type of method request")]
     [EnableCors("*", "*", "*")]
     public class ReportController : ApiController
     {
