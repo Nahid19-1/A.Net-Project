@@ -24,6 +24,11 @@ namespace DAL.Repo
              return db.Users.FirstOrDefault();
          }
 
+        public User AddtoCart(User obj)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<User> Buslist(int id)
         {
             throw new NotImplementedException();

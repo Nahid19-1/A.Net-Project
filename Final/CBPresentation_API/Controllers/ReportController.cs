@@ -1,4 +1,5 @@
 ﻿using BLL.Services;
+using DAL.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,23 @@ namespace CBPresentation_API.Controllers
         {
             var st = CartService.Get();
             return Request.CreateResponse(HttpStatusCode.OK, st);
+        }
+
+        [Route("api/AddtoCart")]    // id = bus id
+        [HttpPost]
+        public HttpResponseMessage AddtoCart(Cart data)
+        {
+            if (data == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, "Can not Add to Cart");
+            }
+            else
+            {
+                CartService.Create(data);
+                return Request.CreateResponse(HttpStatusCode.OK, "Added to Cart");
+            }
+
+
         }
 
 

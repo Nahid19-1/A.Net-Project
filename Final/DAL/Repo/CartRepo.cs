@@ -55,6 +55,11 @@ namespace DAL.Repo
             return data;
         }
 
-
+        public Cart AddtoCart(Cart obj)
+        {
+            db.Carts.Add(obj);
+            db.SaveChanges();
+            return db.Carts.FirstOrDefault();
+        }
     }
 }

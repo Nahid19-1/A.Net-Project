@@ -64,5 +64,18 @@ namespace BLL.Services
             }
             return data;
         }
+
+        public static CartModel Create(Cart obj)
+        {
+            var ct = UserDataAccessFectory.CartDataAccess().AddtoCart(obj);
+            var c = new CartModel()
+            {
+                U_Id = ct.U_Id,
+                B_Id = ct.B_Id,
+                Stopage = ct.Stopage,
+                BS_Fair = ct.BS_Fair
+            };
+            return c;
+        }
     }
 }

@@ -21,5 +21,10 @@ namespace DAL
         {
             return new CartRepo(db);
         }
+
+        public static IRepository<User, int> SuperDataAccess()
+        {
+            return new SupervisorRepo(db);
+        }
     }
 }
