@@ -18,6 +18,10 @@ namespace DAL.Repo
         public Cart Add(Cart obj)
         {
             throw new NotImplementedException();
+<<<<<<< HEAD
+=======
+           
+>>>>>>> Shakirin
         }
 
         public Cart Delete(int id)
@@ -50,11 +54,23 @@ namespace DAL.Repo
             var data = (from c in db.Carts
                         where c.B_Id == id
                         select c).ToList();
+<<<<<<< HEAD
 
 
             return data;
         }
 
 
+=======
+            return data;
+        }
+
+        public Cart AddtoCart(Cart obj)
+        {
+            db.Carts.Add(obj);
+            db.SaveChanges();
+            return db.Carts.FirstOrDefault();
+        }
+>>>>>>> Shakirin
     }
 }

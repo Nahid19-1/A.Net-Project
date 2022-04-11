@@ -10,3 +10,18 @@ D:\Study\UN\Semister 10\ADVANCED PROGRAMMING WITH .NET [A]\A.Net-Project\Final\B
 D:\Study\UN\Semister 10\ADVANCED PROGRAMMING WITH .NET [A]\A.Net-Project\Final\BLL\obj\Debug\BLL.csproj.CopyComplete
 D:\Study\UN\Semister 10\ADVANCED PROGRAMMING WITH .NET [A]\A.Net-Project\Final\BLL\obj\Debug\BLL.dll
 D:\Study\UN\Semister 10\ADVANCED PROGRAMMING WITH .NET [A]\A.Net-Project\Final\BLL\obj\Debug\BLL.pdb
+<<<<<<< HEAD
+=======
+C:\Users\USER\Downloads\A.Net-Project-mainSun\A.Net-Project-main\Final\BLL\bin\Debug\BLL.dll
+C:\Users\USER\Downloads\A.Net-Project-mainSun\A.Net-Project-main\Final\BLL\bin\Debug\BLL.pdb
+C:\Users\USER\Downloads\A.Net-Project-mainSun\A.Net-Project-main\Final\BLL\bin\Debug\DAL.dll
+C:\Users\USER\Downloads\A.Net-Project-mainSun\A.Net-Project-main\Final\BLL\bin\Debug\EntityFramework.dll
+C:\Users\USER\Downloads\A.Net-Project-mainSun\A.Net-Project-main\Final\BLL\bin\Debug\DAL.pdb
+C:\Users\USER\Downloads\A.Net-Project-mainSun\A.Net-Project-main\Final\BLL\bin\Debug\DAL.dll.config
+C:\Users\USER\Downloads\A.Net-Project-mainSun\A.Net-Project-main\Final\BLL\bin\Debug\EntityFramework.xml
+C:\Users\USER\Downloads\A.Net-Project-mainSun\A.Net-Project-main\Final\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\USER\Downloads\A.Net-Project-mainSun\A.Net-Project-main\Final\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\USER\Downloads\A.Net-Project-mainSun\A.Net-Project-main\Final\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\USER\Downloads\A.Net-Project-mainSun\A.Net-Project-main\Final\BLL\obj\Debug\BLL.dll
+C:\Users\USER\Downloads\A.Net-Project-mainSun\A.Net-Project-main\Final\BLL\obj\Debug\BLL.pdb
+>>>>>>> Shakirin

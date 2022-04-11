@@ -8,3 +8,16 @@ D:\Study\UN\Semister 10\ADVANCED PROGRAMMING WITH .NET [A]\A.Net-Project\Final\D
 D:\Study\UN\Semister 10\ADVANCED PROGRAMMING WITH .NET [A]\A.Net-Project\Final\DAL\obj\Debug\DAL.csproj.CopyComplete
 D:\Study\UN\Semister 10\ADVANCED PROGRAMMING WITH .NET [A]\A.Net-Project\Final\DAL\obj\Debug\DAL.dll
 D:\Study\UN\Semister 10\ADVANCED PROGRAMMING WITH .NET [A]\A.Net-Project\Final\DAL\obj\Debug\DAL.pdb
+<<<<<<< HEAD
+=======
+C:\Users\USER\Downloads\A.Net-Project-mainSun\A.Net-Project-main\Final\DAL\bin\Debug\DAL.dll.config
+C:\Users\USER\Downloads\A.Net-Project-mainSun\A.Net-Project-main\Final\DAL\bin\Debug\DAL.dll
+C:\Users\USER\Downloads\A.Net-Project-mainSun\A.Net-Project-main\Final\DAL\bin\Debug\DAL.pdb
+C:\Users\USER\Downloads\A.Net-Project-mainSun\A.Net-Project-main\Final\DAL\bin\Debug\EntityFramework.dll
+C:\Users\USER\Downloads\A.Net-Project-mainSun\A.Net-Project-main\Final\DAL\bin\Debug\EntityFramework.xml
+C:\Users\USER\Downloads\A.Net-Project-mainSun\A.Net-Project-main\Final\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\USER\Downloads\A.Net-Project-mainSun\A.Net-Project-main\Final\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\USER\Downloads\A.Net-Project-mainSun\A.Net-Project-main\Final\DAL\obj\Debug\DAL.csproj.CopyComplete
+C:\Users\USER\Downloads\A.Net-Project-mainSun\A.Net-Project-main\Final\DAL\obj\Debug\DAL.dll
+C:\Users\USER\Downloads\A.Net-Project-mainSun\A.Net-Project-main\Final\DAL\obj\Debug\DAL.pdb
+>>>>>>> Shakirin

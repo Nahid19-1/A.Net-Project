@@ -64,6 +64,12 @@ namespace CBPresentation_API.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, "User Edited"); ;
 
         }
+<<<<<<< HEAD
         
+=======
+
+        
+
+>>>>>>> Shakirin
     }
 }
