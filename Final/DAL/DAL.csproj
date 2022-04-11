@@ -50,7 +50,6 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Database\Admin.cs">
-<<<<<<< HEAD
       <DependentUpon>CBUS.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\BusInfo.cs">
@@ -88,45 +87,6 @@
     </Compile>
     <Compile Include="Database\User.cs">
       <DependentUpon>CBUS.tt</DependentUpon>
-=======
-      <DependentUpon>CBus.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\BusInfo.cs">
-      <DependentUpon>CBus.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\BusOwner.cs">
-      <DependentUpon>CBus.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\BusRoute.cs">
-      <DependentUpon>CBus.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\Cart.cs">
-      <DependentUpon>CBus.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\CBus.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CBus.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\CBus.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CBus.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\CBus.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CBus.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Database\SoldTicket.cs">
-      <DependentUpon>CBus.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\Supervisor.cs">
-      <DependentUpon>CBus.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\User.cs">
-      <DependentUpon>CBus.tt</DependentUpon>
->>>>>>> Shakirin
     </Compile>
     <Compile Include="IAuth.cs" />
     <Compile Include="IRepository.cs" />
@@ -139,7 +99,6 @@
     <Compile Include="UserDataAccessFectory.cs" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <EntityDeploy Include="Database\CBUS.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CBUS.Designer.cs</LastGenOutput>
@@ -149,20 +108,10 @@
     <None Include="App.Config" />
     <None Include="Database\CBUS.edmx.diagram">
       <DependentUpon>CBUS.edmx</DependentUpon>
-=======
-    <None Include="App.Config" />
-    <EntityDeploy Include="Database\CBus.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CBus.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Database\CBus.edmx.diagram">
-      <DependentUpon>CBus.edmx</DependentUpon>
->>>>>>> Shakirin
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Content Include="Database\CBUS.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>CBUS.Context.cs</LastGenOutput>
@@ -178,21 +127,5 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup />
-=======
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Database\CBus.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CBus.edmx</DependentUpon>
-      <LastGenOutput>CBus.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Database\CBus.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CBus.edmx</DependentUpon>
-      <LastGenOutput>CBus.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
->>>>>>> Shakirin
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

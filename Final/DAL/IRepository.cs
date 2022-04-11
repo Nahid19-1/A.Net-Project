@@ -14,9 +14,5 @@ namespace DAL
         T Edit(T obj);
         T Delete(ID id);
         List<T> Buslist(ID id);
-<<<<<<< HEAD
-=======
-        T AddtoCart(T obj);
->>>>>>> Shakirin
     }
 }

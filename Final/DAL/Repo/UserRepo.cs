@@ -65,18 +65,5 @@ namespace DAL.Repo
         {
             return db.Users.ToList();
         }
-<<<<<<< HEAD
-=======
-
-        public Cart AddtoCart(Cart obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public User AddtoCart(User obj)
-        {
-            throw new NotImplementedException();
-        }
->>>>>>> Shakirin
     }
 }
