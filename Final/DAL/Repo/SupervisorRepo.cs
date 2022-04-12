@@ -54,5 +54,10 @@ namespace DAL.Repo
         {
             throw new NotImplementedException();
         }
+
+        public List<User> Purchase(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

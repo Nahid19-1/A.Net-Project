@@ -70,5 +70,10 @@ namespace DAL.Repo
         {
             return db.Users.ToList();
         }
+
+        public List<User> Purchase(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

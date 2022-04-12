@@ -15,5 +15,6 @@ namespace DAL
         T Delete(ID id);
         List<T> Buslist(ID id);
         T AddtoCart(T obj);
+        List<T> Purchase(int id);
     }
 }

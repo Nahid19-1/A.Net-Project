@@ -55,6 +55,16 @@ namespace DAL.Repo
             return data;
         }
 
+        public List<Cart>Purchase(int id)
+        {
+            var data = (from c in db.Carts
+                        where c.U_Id == id
+                        select c).ToList();
+
+
+            return data;
+        }
+
         public Cart AddtoCart(Cart obj)
         {
             db.Carts.Add(obj);

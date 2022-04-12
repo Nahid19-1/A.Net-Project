@@ -45,6 +45,7 @@
     <Compile Include="DataAccessFactory.cs" />
     <Compile Include="Entities\AdminModel.cs" />
     <Compile Include="Entities\BusModel.cs" />
+    <Compile Include="Entities\BusRouteModel.cs" />
     <Compile Include="Entities\CartModel.cs" />
     <Compile Include="Entities\SupervisorModel.cs" />
     <Compile Include="Entities\UserModel.cs" />

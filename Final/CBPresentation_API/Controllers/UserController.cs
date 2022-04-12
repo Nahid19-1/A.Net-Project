@@ -64,6 +64,17 @@ namespace CBPresentation_API.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, "User Edited"); ;
 
         }
+
+        [Route("api/cart/history/{id}")]
+        [HttpGet]
+        public HttpResponseMessage Phistory(int id)
+        {
+            var st = UserService.History(id);
+            return Request.CreateResponse(HttpStatusCode.OK, st);
+
+        }
+
         
+
     }
 }

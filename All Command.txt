@@ -1,1 +1,7 @@
-This is the Final Project File.
+git pull
+
+Work on the project then
+
+git add .
+git commit -m ""
+git push origin main

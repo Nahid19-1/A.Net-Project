@@ -113,5 +113,25 @@ namespace BLL.Services
             return u;
 
         }
+
+        public static List<CartModel> History(int id)
+        {
+            var ct = UserDataAccessFectory.CartDataAccess().Purchase(id);
+            List<CartModel> data = new List<CartModel>();
+            foreach (var s in ct)
+            {
+                data.Add(new CartModel()
+                {
+                    CR_Id = s.CR_Id,
+                    U_Id = s.U_Id,
+                    B_Id = s.B_Id,
+                    Stopage = s.Stopage,
+                    BS_Fair = s.BS_Fair
+
+                });
+
+            }
+            return data;
+        }
     }
 }
