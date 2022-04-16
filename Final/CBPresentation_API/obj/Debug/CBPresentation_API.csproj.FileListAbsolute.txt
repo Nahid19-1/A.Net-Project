@@ -75,3 +75,5 @@ D:\Study\UN\Semister 10\ADVANCED PROGRAMMING WITH .NET [A]\A.Net-Project\Final\C
 D:\Study\UN\Semister 10\ADVANCED PROGRAMMING WITH .NET [A]\A.Net-Project\Final\CBPresentation_API\bin\System.Web.Cors.dll
 D:\Study\UN\Semister 10\ADVANCED PROGRAMMING WITH .NET [A]\A.Net-Project\Final\CBPresentation_API\bin\System.Web.Http.Cors.dll
 D:\Study\UN\Semister 10\ADVANCED PROGRAMMING WITH .NET [A]\A.Net-Project\Final\CBPresentation_API\bin\System.Web.Http.Cors.xml
+D:\Study\UN\Semister 10\ADVANCED PROGRAMMING WITH .NET [A]\A.Net-Project\Final\CBPresentation_API\bin\AutoMapper.dll
+D:\Study\UN\Semister 10\ADVANCED PROGRAMMING WITH .NET [A]\A.Net-Project\Final\CBPresentation_API\bin\AutoMapper.xml

@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\CBPresentation_API\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,6 +48,7 @@
     <Compile Include="DataAccessFactory.cs" />
     <Compile Include="Entities\AdminModel.cs" />
     <Compile Include="Entities\BusModel.cs" />
+    <Compile Include="Entities\BusOwnerModel.cs" />
     <Compile Include="Entities\BusRouteModel.cs" />
     <Compile Include="Entities\CartModel.cs" />
     <Compile Include="Entities\SupervisorModel.cs" />
@@ -53,12 +57,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AdminService.cs" />
     <Compile Include="Services\AuthService.cs" />
+    <Compile Include="Services\BusOwnerService.cs" />
+    <Compile Include="Services\BusRouteService.cs" />
     <Compile Include="Services\BusService.cs" />
     <Compile Include="Services\CartService.cs" />
     <Compile Include="Services\SupervisorService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{dff89fc2-e260-4cd2-bfe2-1889cf0a6126}</Project>
