@@ -126,6 +126,7 @@
     <NavigationProperty Name="BusInfoes1" Relationship="Self.FK_BusInfo_Supervisor" FromRole="Users" ToRole="BusInfo" />
     <NavigationProperty Name="Carts" Relationship="Self.FK_Carts_Users" FromRole="Users" ToRole="Carts" />
     <NavigationProperty Name="SoldTickets" Relationship="Self.FK_SoldTickets_User" FromRole="Users" ToRole="SoldTicket" />
+    <NavigationProperty Name="Tokens" Relationship="CircularBusModel.FK_Tokens_Users" FromRole="User" ToRole="Token" />
   </EntityType>
   <Association Name="FK_BusInfo_BusOwner">
     <End Role="Users" Type="Self.User" Multiplicity="0..1" />
@@ -248,5 +249,33 @@
       <End Role="Users" EntitySet="Users" />
       <End Role="SoldTicket" EntitySet="SoldTickets" />
     </AssociationSet>
+    <EntitySet Name="Tokens" EntityType="CircularBusModel.Token" />
+    <AssociationSet Name="FK_Tokens_Users" Association="CircularBusModel.FK_Tokens_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Token" EntitySet="Tokens" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Token">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="AccessToken" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ExpiredAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="User" Relationship="CircularBusModel.FK_Tokens_Users" FromRole="Token" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_Tokens_Users">
+    <End Type="CircularBusModel.User" Role="User" Multiplicity="1" />
+    <End Type="CircularBusModel.Token" Role="Token" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="U_Id" />
+      </Principal>
+      <Dependent Role="Token">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

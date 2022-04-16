@@ -20,6 +20,8 @@
         <AssociationConnector Association="CircularBusModel.FK_SoldTickets_BusInfo" ManuallyRouted="false" />
         <AssociationConnector Association="CircularBusModel.FK_Carts_Users" ManuallyRouted="false" />
         <AssociationConnector Association="CircularBusModel.FK_SoldTickets_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CircularBusModel.Token" Width="1.5" PointX="3" PointY="9.5" />
+        <AssociationConnector Association="CircularBusModel.FK_Tokens_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -20,6 +20,7 @@ namespace DAL.Database
             this.BusInfoes1 = new HashSet<BusInfo>();
             this.Carts = new HashSet<Cart>();
             this.SoldTickets = new HashSet<SoldTicket>();
+            this.Tokens = new HashSet<Token>();
         }
     
         public int U_Id { get; set; }
@@ -37,5 +38,6 @@ namespace DAL.Database
         public virtual ICollection<BusInfo> BusInfoes1 { get; set; }
         public virtual ICollection<Cart> Carts { get; set; }
         public virtual ICollection<SoldTicket> SoldTickets { get; set; }
+        public virtual ICollection<Token> Tokens { get; set; }
     }
 }

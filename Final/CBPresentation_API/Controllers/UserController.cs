@@ -1,4 +1,5 @@
 ﻿using BLL.Services;
+using CBPresentation_API.Auth;
 using DAL.Database;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,8 @@ namespace CBPresentation_API.Controllers
             var st = UserService.Get(id);
             return Request.CreateResponse(HttpStatusCode.OK, st);
         }
-        
+
+        [CustomeAuth]
         [Route("api/user/")]
         [HttpGet]
         public HttpResponseMessage Get()

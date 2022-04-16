@@ -26,5 +26,14 @@ namespace DAL
         {
             return new SupervisorRepo(db);
         }
+
+        public static IAuth<Token> AuthDataAccess()
+        {
+            return new AuthRepo(db);
+        }
+        public static IRepository<Token, string> TokenDataAccess()
+        {
+            return new AuthRepo(db);
+        }
     }
 }
