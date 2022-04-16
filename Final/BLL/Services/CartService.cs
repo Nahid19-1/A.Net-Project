@@ -77,5 +77,20 @@ namespace BLL.Services
             };
             return c;
         }
+
+        public static CartModel Remove(int id)
+        {
+            var us = UserDataAccessFectory.CartDataAccess().Delete(id);
+            var c = new CartModel()
+            {
+                CR_Id = us.CR_Id,
+                U_Id = us.U_Id,
+                B_Id = us.B_Id,
+                Stopage = us.Stopage,
+                BS_Fair = us.BS_Fair
+            };
+            return c;
+        }
+
     }
 }

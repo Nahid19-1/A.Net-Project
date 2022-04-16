@@ -22,7 +22,10 @@ namespace DAL.Repo
 
         public Cart Delete(int id)
         {
-            throw new NotImplementedException();
+            var e = db.Carts.FirstOrDefault(dn => dn.CR_Id == id);
+            db.Carts.Remove(e);
+            db.SaveChanges();
+            return db.Carts.FirstOrDefault();
         }
 
         public Cart Edit(Cart obj)

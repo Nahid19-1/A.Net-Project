@@ -10,17 +10,20 @@
 					var app = angular.module('myapp',[]);
 
 
+
 					app.controller('httpget',function($scope,$http){
-						$http.get("https://localhost:44399/api/cart/bus/5")
+						$http.get("https://localhost:44399/api/user")
 						.then(function(response){
-							$scope.Carts = response.data;
-						
+							$scope.Users = response.data;
+							
+
 						});
 					});
 			</script>
 	</head>
 	
 	<body ng-app="myapp">
+
 		<link rel="stylesheet" href="CSS.css" />
 			<div class="container" ng-controller="httpget" >
 				<div class="row">
@@ -40,21 +43,25 @@
 												<table class="table">
 													<thead>
 														<th>#</th>
-														
-														<th>Bus Id</th>
-														<th>Stopage</th>
-														<th>Bus Fair</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Address</th>
+                            <th>Gender</th>
+                            <th>Date of Birth</th>
 												
 													</thead>
 														<tbody>
-															<tr ng-repeat="c in Carts">
-																<td>{{c.CR_Id}}</td>
-																
-																<td>{{c.B_Id}}</td>
-																<td>{{c.Stopage}}</td>
-																<td>{{c.BS_Fair}}</td>
-																
-														</tr>
+															<tr ng-repeat="u in Users">
+                                <td>{{u.U_Id}}</td>
+                                <td>{{u.U_UserName}}</td>
+                                <td>{{u.U_Phone}}</td>
+                                <td>{{u.U_Email}}</td>
+                                <td>{{u.U_Address}}</td>
+                                <td>{{u.U_Gender}}</td>
+                                <td>{{u.U_DateofBirth}}</td>
+                  
+                             </tr>
 														</tbody>
 												</table>
 										</div>
@@ -64,5 +71,6 @@
 				</div>
 		</div>
 
+	
 	</body>
 </html>

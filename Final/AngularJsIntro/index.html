@@ -9,21 +9,7 @@
 			<script>
 					var app = angular.module('myapp',[]);
 
-					app.controller('myctr',function($scope){
-						$scope.a= 10;
-						$scope.b= 12;
 
-					});
-
-					app.controller('studentctrl',function($scope)
-					{
-						$scope.students = [
-							{id:1 , name:"Nahid"},
-							{id:2 , name:"Sakib"},
-							{id:3 , name:"Kajol"}
-						];
-						
-					});
 
 					app.controller('httpget',function($scope,$http){
 						$http.get("https://localhost:44399/api/user")
@@ -37,64 +23,28 @@
 	</head>
 	
 	<body ng-app="myapp">
-		<div ng-controller="myctr">
-		Sum of a+b is:	{{a+b}}
-		</div>
 
-		<div ng-controller="studentctrl">
-			<table class="table table-bordered">
-				<thead>
-					<th>Id</th>
-					<th>Name</th>
-				</thead>
-				<tbody>
-					 <tr ng-repeat="s in students">
-							<td>{{s.id}}</td>
-							<td>{{s.name}}</td>
-							
+		<link href="IndexCss.css" rel="stylesheet" id="bootstrap-css">
 
-					 </tr>
-				</tbody>
-			</table>
-		</div>
 
-		<div ng-controller="httpget">
-			<table class="table table-bordered">
-				<thead>
-					<th>Id</th>
-					<th>Name</th>
-					<th>Phone</th>
-					<th>Email</th>
-					<th>Address</th>
-					<th>Gender</th>
-					<th>Date of Birth</th>
+    <div class="container">
+        <h1 class="text-center">General View</h1>
+        <hr class="my-5" />
+      	<h4>All Pages Links</h4>
+				<div class="row mt-3">
 
-				</thead>
-				<tbody>
-					 <tr ng-repeat="u in Users">
-							<td>{{u.U_Id}}</td>
-							<td>{{u.U_UserName}}</td>
-							<td>{{u.U_Phone}}</td>
-							<td>{{u.U_Email}}</td>
-							<td>{{u.U_Address}}</td>
-							<td>{{u.U_Gender}}</td>
-							<td>{{u.U_DateofBirth}}</td>
+					<div class="col">
+							<button class="col btn btn-dark-moon btn-rounded"><a href="BusRoute.html">Bus Rout List</a></button>
+					</div>
+					<div class="col">
+						<button class="col btn btn-dark-moon btn-rounded"><a href="BusReport.html" >Bus Report List</a></button>
+					</div>
+					<div class="col">
+						<button class="col btn btn-dark-moon btn-rounded"><a href="UserList.html" >User List</a></button>
+					</div>
 
-					 </tr>
-				</tbody>
-			</table>
-
-		</div>
-
-		<div class="card" style="width: 18rem;"ng-controller="httpget">
-			
-			<div class="card-body" ng-repeat="p in Users">
-				<h5 class="card-title">{{p.U_UserName}}</h5>
-				<p class="card-text">{{p.U_Phone}}</p>
-				<a href="Cart.html" class="btn btn-primary">{{p.U_Address}}</a>
-			</div>
-		</div>
-
+				</div>
+    </div>
 	
 	</body>
 </html>

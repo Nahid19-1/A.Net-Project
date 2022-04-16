@@ -35,5 +35,10 @@ namespace DAL
         {
             return new AuthRepo(db);
         }
+
+        public static IRepository<BusRoute, int> BusRouteDataAccess()
+        {
+            return new BusRouteRepo(db);
+        }
     }
 }

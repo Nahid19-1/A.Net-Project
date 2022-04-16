@@ -23,7 +23,7 @@ namespace CBPresentation_API.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, st);
         }
 
-        [CustomeAuth]
+        //[CustomeAuth]
         [Route("api/user/")]
         [HttpGet]
         public HttpResponseMessage Get()
@@ -77,6 +77,23 @@ namespace CBPresentation_API.Controllers
         }
 
         
+        [Route("api/user/busrouts")]
+        [HttpGet]
+        public HttpResponseMessage BusRouts()
+        {
+            var st = BusRouteService.BRouts();
+            return Request.CreateResponse(HttpStatusCode.OK, st);
+        }
+
+
+        [Route("api/delete/cart/{id}")]
+        [HttpGet]
+        public HttpResponseMessage CartDelete(int id)
+        {
+            var st = CartService.Remove(id);
+            return Request.CreateResponse(HttpStatusCode.OK, "Deleted From Cart");
+
+        }
 
     }
 }
