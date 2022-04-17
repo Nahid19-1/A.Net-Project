@@ -46,7 +46,11 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="DataAccessFactory.cs" />
+    <Compile Include="Entities\AdminBusInfoModel.cs" />
+    <Compile Include="Entities\AdminBusOwnerModel.cs" />
+    <Compile Include="Entities\AdminBusRouteModel.cs" />
     <Compile Include="Entities\AdminModel.cs" />
+    <Compile Include="Entities\AdminUserModel.cs" />
     <Compile Include="Entities\BusModel.cs" />
     <Compile Include="Entities\BusOwnerModel.cs" />
     <Compile Include="Entities\BusRouteModel.cs" />
@@ -55,7 +59,11 @@
     <Compile Include="Entities\TokenModel.cs" />
     <Compile Include="Entities\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AdminBusInfoService.cs" />
+    <Compile Include="Services\AdminBusOwnerService.cs" />
+    <Compile Include="Services\AdminBusRouteService.cs" />
     <Compile Include="Services\AdminService.cs" />
+    <Compile Include="Services\AdminUserService.cs" />
     <Compile Include="Services\AuthService.cs" />
     <Compile Include="Services\BusOwnerService.cs" />
     <Compile Include="Services\BusRouteService.cs" />
