@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    class BusRouteRepo : IRepository<BusRoute, int>
+    class BusRouteRepo : IRepositoryBusOwner<BusRoute, int>, IRepositoryBus<BusRoute, int>
     {
         private CircularBusEntities db;
 
@@ -20,11 +20,6 @@ namespace DAL.Repo
             db.BusRoutes.Add(obj);
             db.SaveChanges();
             return db.BusRoutes.FirstOrDefault();
-        }
-
-        public BusRoute AddtoCart(BusRoute obj)
-        {
-            throw new NotImplementedException();
         }
 
         public List<BusRoute> Buslist(int id)
@@ -56,11 +51,6 @@ namespace DAL.Repo
         public List<BusRoute> Get()
         {
             return db.BusRoutes.ToList();
-        }
-
-        public List<BusRoute> Purchase(int id)
-        {
-            throw new NotImplementedException();
         }
     }
 }

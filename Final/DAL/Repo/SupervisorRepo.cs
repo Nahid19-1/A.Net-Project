@@ -18,7 +18,10 @@ namespace DAL.Repo
 
         public User Add(User obj)
         {
-            throw new NotImplementedException();
+            obj.U_Status = "pending";
+            db.Users.Add(obj);
+            db.SaveChanges();
+            return obj;
         }
 
         public User AddtoCart(User obj)

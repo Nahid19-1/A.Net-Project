@@ -91,7 +91,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Auth\BusOwnerCustomAuth.cs" />
     <Compile Include="Auth\CustomeAuth.cs" />
+    <Compile Include="Auth\SuperAuth.cs" />
     <Compile Include="Controllers\AdminBusInfoController.cs" />
     <Compile Include="Controllers\AdminBusOwnerController.cs" />
     <Compile Include="Controllers\AdminBusRouteController.cs" />
@@ -99,6 +101,7 @@
     <Compile Include="Controllers\AdminUserController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BusController.cs" />
+    <Compile Include="Controllers\BusOwnerAuthController.cs" />
     <Compile Include="Controllers\BusOwnerController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SupervisorController.cs" />

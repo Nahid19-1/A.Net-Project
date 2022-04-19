@@ -16,14 +16,14 @@ namespace BLL.Services
         {
             var config = new MapperConfiguration(c => c.CreateMap<BusInfo, BusModel>());
             var mapper = new Mapper(config);
-            var data = mapper.Map<List<BusModel>>(BusOwnerDataAccessFactory.BusDataAccess().Get());
+            var data = mapper.Map<List<BusModel>>(BusOwnerDataAccessFactory.BusFirstDataAccess().Get());
             return data;
         }
         public static BusModel Get(int id)
         {
             var config = new MapperConfiguration(c => c.CreateMap<BusInfo, BusModel>());
             var mapper = new Mapper(config);
-            var data = mapper.Map<BusModel>(BusOwnerDataAccessFactory.BusDataAccess().Get(id));
+            var data = mapper.Map<BusModel>(BusOwnerDataAccessFactory.BusFirstDataAccess().Get(id));
             return data;
         }
         public static void Add(BusModel obj)
@@ -31,19 +31,19 @@ namespace BLL.Services
             var config = new MapperConfiguration(c => c.CreateMap<BusModel, BusInfo>());
             var mapper = new Mapper(config);
             var data = mapper.Map<BusInfo>(obj);
-            BusOwnerDataAccessFactory.BusDataAccess().Add(data);
+            BusOwnerDataAccessFactory.BusFirstDataAccess().Add(data);
         }
         public static void Edit(BusModel obj)
         {
             var config = new MapperConfiguration(c => c.CreateMap<BusModel, BusInfo>());
             var mapper = new Mapper(config);
             var data = mapper.Map<BusInfo>(obj);
-            BusOwnerDataAccessFactory.BusDataAccess().Edit(data);
+            BusOwnerDataAccessFactory.BusFirstDataAccess().Edit(data);
         }
         public static void Delete(int i)
         {
             
-            BusOwnerDataAccessFactory.BusDataAccess().Delete(i);
+            BusOwnerDataAccessFactory.BusFirstDataAccess().Delete(i);
         }
     }
 }

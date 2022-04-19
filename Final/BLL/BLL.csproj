@@ -64,11 +64,16 @@
     <Compile Include="Services\AdminBusRouteService.cs" />
     <Compile Include="Services\AdminService.cs" />
     <Compile Include="Services\AdminUserService.cs" />
+    <Compile Include="Services\AssignedUpdateBusService.cs" />
     <Compile Include="Services\AuthService.cs" />
+    <Compile Include="Services\BusOwnerAuthService.cs" />
+    <Compile Include="Services\BusOwnerBusSearchService.cs" />
+    <Compile Include="Services\BusOwnerCartService.cs" />
     <Compile Include="Services\BusOwnerService.cs" />
     <Compile Include="Services\BusRouteService.cs" />
     <Compile Include="Services\BusService.cs" />
     <Compile Include="Services\CartService.cs" />
+    <Compile Include="Services\SuperAuthService.cs" />
     <Compile Include="Services\SupervisorService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>

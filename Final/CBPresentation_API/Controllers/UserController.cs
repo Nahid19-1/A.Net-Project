@@ -81,7 +81,7 @@ namespace CBPresentation_API.Controllers
         [HttpGet]
         public HttpResponseMessage BusRouts()
         {
-            var st = BusRouteService.BRouts();
+            var st = BusRouteService.Get();
             return Request.CreateResponse(HttpStatusCode.OK, st);
         }
 

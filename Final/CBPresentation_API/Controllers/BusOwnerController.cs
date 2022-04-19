@@ -1,5 +1,6 @@
 ﻿using BLL.Entities;
 using BLL.Services;
+using CBPresentation_API.Auth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ using System.Web.Script.Serialization;
 
 namespace CBPresentation_API.Controllers
 {
+    [BusOwnerCustomAuth]
     public class BusOwnerController : ApiController
     {
         //Bus Owner cruds____________________________________________________________________
@@ -28,6 +30,15 @@ namespace CBPresentation_API.Controllers
         public dynamic GetBusOwner(int id)
         {
             var owner = BusOwnerService.Get(id);
+            var data = new JavaScriptSerializer().Serialize(owner);
+            return data;
+        }
+
+        [Route("api/BusOwner/viewOwnedBus/{id}")]
+        [HttpGet]
+        public dynamic GetBusList(int id)
+        {
+            var owner = BusOwnerService.GetBusList(id);
             var data = new JavaScriptSerializer().Serialize(owner);
             return data;
         }
@@ -62,11 +73,11 @@ namespace CBPresentation_API.Controllers
             }
         }
 
-        [Route("api/BusOwner/deleteBusOwner")]
+        [Route("api/BusOwner/deleteBusOwner/{id}")]
         [HttpPost]
-        public dynamic DeleteBusOwner(int i)
+        public dynamic DeleteBusOwner(int id)
         {
-            BusOwnerService.Delete(i);
+            BusOwnerService.Delete(id);
             return Request.CreateResponse(HttpStatusCode.OK, "Bus Owner Deleted");
         }
 
@@ -121,11 +132,11 @@ namespace CBPresentation_API.Controllers
             }
         }
 
-        [Route("api/BusOwner/deleteBus")]
+        [Route("api/BusOwner/deleteBus/{id}")]
         [HttpPost]
-        public dynamic DeleteBus(int i)
+        public dynamic DeleteBus(int id)
         {
-            BusService.Delete(i);
+            BusService.Delete(id);
             return Request.CreateResponse(HttpStatusCode.OK, "Bus Deleted");
         }
 
@@ -189,12 +200,36 @@ namespace CBPresentation_API.Controllers
             }
         }
 
-        [Route("api/BusOwner/deleteRoute")]
+        [Route("api/BusOwner/deleteRoute/{id}")]
         [HttpPost]
-        public dynamic DeleteRoute(int i)
+        public dynamic DeleteRoute(int id)
         {
-            BusRouteService.Delete(i);
+            BusRouteService.Delete(id);
             return Request.CreateResponse(HttpStatusCode.OK, "Route Deleted");
         }
+
+        //Cart cruds____________________________________________________________________
+
+        [Route("api/BusOwner/viewSells/{id}")]
+        [HttpGet]
+        public dynamic GetSells(int id)
+        {
+            var route = BusOwnerCartService.GetBusList(id);
+            var data = new JavaScriptSerializer().Serialize(route);
+            return data;
+        }
+
+        //Search____________________________________________________________________
+
+        [Route("api/BusOwner/search/bus")]
+        [HttpPost]
+        public dynamic BusSearch(BusModel bus)
+        {
+            string name = bus.B_Name;
+            var route = BusOwnerBusSearchService.GetBusList(name);
+            var data = new JavaScriptSerializer().Serialize(route);
+            return data;
+        }
+
     }
 }

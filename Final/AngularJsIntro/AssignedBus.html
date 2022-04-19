@@ -11,9 +11,9 @@
 
 			
 					app.controller('httpget',function($scope,$http){
-						$http.get("https://localhost:44399/api/supervisor/21")
+						$http.get("https://localhost:44399/api/assignedbus/21")
 						.then(function(response){
-							$scope.Users = response.data;
+							$scope.Bus= response.data;
               
 						});
 					});
@@ -22,12 +22,12 @@
 	
 	<body ng-app="myapp">
 
-		 <div ng-controller="httpget">
+		<div ng-controller="httpget">
 			<br>
 		 <div class="container">
 			<div class="main-body">
 
-				<h1> Supervisor's Dashboard</h1>
+				<h1> Assigned Bus</h1>
 				<br>
 				<div class="row gutters-sm">
 					<div class="col-md-4 mb-3">
@@ -37,8 +37,8 @@
 						  <div class="d-flex flex-column align-items-center text-center">
 							
 							<div class="mt-3">
-							  <h4>{{Users.U_UserName}}</h4>
-							  <p class="text-secondary mb-1">Supervisor</p>
+							  <h4>Bus Name: <br> {{Bus.B_Name}} <br></h4>
+							  <h6>Available Seat: <br> {{Bus.B_AvailableSeat}}</h6>
 							</div>
 						  </div>
 						</div>
@@ -51,64 +51,64 @@
 						<div class="card-body">
 						  <div class="row">
 							<div class="col-sm-3">
-							  <h6 class="mb-0">Full Name</h6>
-							</div>
-							<div class="col-sm-9 text-secondary">
-								{{Users.U_UserName}}
-							</div>
-							<hr>
-						  </div>
-						  <div class="row">
-							<div class="col-sm-3">
 							  <h6 class="mb-0">ID</h6>
 							</div>
 							<div class="col-sm-9 text-secondary">
-								{{Users.U_Id}}
+								{{Bus.B_Id}}
 							</div>
 						  </div>
 						  <hr>
 						  <div class="row">
 							<div class="col-sm-3">
-							  <h6 class="mb-0">Email</h6>
+							  <h6 class="mb-0">Number Plate</h6>
 							</div>
 							<div class="col-sm-9 text-secondary">
-								{{Users.U_Email}}
+								{{Bus.B_NoPlate}}
 							</div>
 						  </div>
 						  <hr>
 						  <div class="row">
 							<div class="col-sm-3">
-							  <h6 class="mb-0">Contact Number</h6>
+							  <h6 class="mb-0">Type</h6>
 							</div>
 							<div class="col-sm-9 text-secondary">
-								{{Users.U_Phone}}
+								{{Bus.B_Type}}
 							</div>
 						  </div>
 						  <hr>
 						  <div class="row">
 							<div class="col-sm-3">
-							  <h6 class="mb-0">Address</h6>
+							  <h6 class="mb-0">Route</h6>
 							</div>
 							<div class="col-sm-9 text-secondary">
-								{{Users.U_Address}}
+								{{Bus.B_Route}}
 							</div>
 						  </div>
 						  <hr>
 						  <div class="row">
 							<div class="col-sm-3">
-							  <h6 class="mb-0">Gender</h6>
+							  <h6 class="mb-0">Staring Time</h6>
 							</div>
 							<div class="col-sm-9 text-secondary">
-								{{Users.U_Gender}}
+								{{Bus.B_Time}}
 							</div>
 						  </div>
 						  <hr>
 						  <div class="row">
 							<div class="col-sm-3">
-							  <h6 class="mb-0">Date of Birth</h6>
+							  <h6 class="mb-0">Fair</h6>
 							</div>
 							<div class="col-sm-9 text-secondary">
-								{{Users.U_DateofBirth}}
+								{{Bus.B_Fair}}
+							</div>
+						  </div>
+						  <hr>
+						  <div class="row">
+							<div class="col-sm-3">
+							  <h6 class="mb-0">Bus Owner Id</h6>
+							</div>
+							<div class="col-sm-9 text-secondary">
+								{{Bus.B_OwnedBy}}
 							</div>
 						  </div>
 						</div>
@@ -116,5 +116,6 @@
 				</div>
 			</div>
 		</div>
+
 	</body>
 </html>
